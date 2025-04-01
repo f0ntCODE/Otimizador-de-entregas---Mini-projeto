@@ -21,14 +21,14 @@ public class mainController {
 
     @GetMapping("/metodos")
     public String metodosPage() {
-        backPack mochila = new backPack(5, 10, 0, 15    );
+        backPack mochila = new backPack(6, 10, 0, 15    );
         
         int[] vetor = mochila.gerarProblema();
 
         System.out.println(Arrays.toString(vetor) + " Problema gerado"); //para fins de apuração
-        int[] solucao = mochila.solucaoInicial(vetor);
+        //BUG! int[] solucao = mochila.solucaoInicial(vetor);
 
-        System.out.println(Arrays.toString(solucao) + " Solução inicial");
+        //BUG! System.out.println(Arrays.toString(solucao) + " Solução inicial");
 
         int avaliado = mochila.avaliaSolucao();
         System.out.println(avaliado + " Avaliação");

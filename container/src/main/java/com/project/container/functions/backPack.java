@@ -9,40 +9,40 @@ public class backPack {
      * VARIÁVEIS
      */
     
-    private int n = 0;
-    private final int maxItens;
-    private final int minItens;
-    private final int capacidadeMaxima;
+    private int maxItens = 0;
+    private final int pesoMax;
+    private final int pesoMin;
+    private final int capacidadeCarga;
     private final int[] p;
     private final int[] s;
 
-    public backPack(int n, int maxItens, int minItens, int capacidadeMaxima){
-        this.n = n;
+    public backPack(int maxItens, int pesoMax, int pesoMin, int capacidadeCarga){
         this.maxItens = maxItens;
-        this.minItens = minItens;
-        this.capacidadeMaxima = capacidadeMaxima;
-        this.p = new int[n];
-        this.s = new int[n];
+        this.pesoMax = pesoMax;
+        this.pesoMin = pesoMin;
+        this.capacidadeCarga = capacidadeCarga;
+        this.p = new int[maxItens];
+        this.s = new int[maxItens];
 
     }
 
     public int[] gerarProblema() {
-        int v[] = new int[n];
-        for (int cont = 0; cont < n; cont++) {
-            v[cont] = (int) (Math.random() * (maxItens - minItens + 1)) + minItens;
+        int v[] = new int[maxItens];
+        for (int cont = 0; cont < maxItens; cont++) {
+            v[cont] = (int) (Math.random() * (maxItens - pesoMin + 1)) + pesoMin;
         }
         return v;
     }
 
-    public int[] solucaoInicial(int p[]) {
-        int[] s = new int[n];
+    public int[] solucaoInicial(int l[], int p[]) { //l = lucro; p = peso
+        int[] s = new int[maxItens];
         int v = 0;
-        boolean[] tried = new boolean[n];
+        boolean[] tried = new boolean[maxItens];
 
         while (true) {
-            int i = (int) (Math.random() * n);
+            int i = (int) (Math.random() * maxItens);
             
-            if (s[i] == 0 && v + p[i] <= capacidadeMaxima) {
+            if (s[i] == 0 && v + p[i] <= capacidadeCarga) {
                 s[i] = 1;
                 v += p[i];
                 Arrays.fill(tried, false);
@@ -64,7 +64,7 @@ public class backPack {
 
     public int avaliaSolucao() {
         int v = 0;
-        for (int cont = 0; cont < n; cont++) {
+        for (int cont = 0; cont < maxItens; cont++) {
             v += s[cont] * p[cont];
         }
         return v;
