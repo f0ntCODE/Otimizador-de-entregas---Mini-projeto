@@ -1,5 +1,25 @@
+
+body{
+    background-color:#2A5C8F;
+    margin:0;
+    font-family: 'Segoe UI', sans-serif;
+    text-align: center;
+    padding: 20px;
+    min-height:90vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    padding:2rem;
+}
+
+header{
+    text-align:center;
+    margin-bottom: 2rem;
+}
+
+
 a{
-    background-color: rgb(72, 0, 167);
+    background-color: chocolate;
     font-weight: bold;
     color: white;
     border: none;
@@ -11,6 +31,11 @@ a{
     font-size: 16px;
     display:inline-block;
     margin-right:15px;
+    cursor:pointer;
+}
+
+a:hover{
+    transform: translateY(-3px);
 }
 
 h1{
@@ -22,12 +47,27 @@ h1{
     text-align: center;
     margin-bottom: 20px;
 }
-
-
-body{
-    background-color: rgb(72, 173, 235);
-    margin:center;
-    font-family: Arial, sans-serif;
+h2{
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+    padding: 0;
     text-align: center;
-    padding: 20px;
+    margin-bottom: 20px;
 }
+
+menu{
+    display:flex;
+    justify-content: center;
+    flex-wrap:wrap;
+    margin-bottom: 30px;
+}
+
+
+icone{
+    font: size 1.3em;
+    margin-right:6px;
+}
+
+
