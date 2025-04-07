@@ -1,5 +1,5 @@
 body {
-    background-color: #455A64; /* Cor mais neutra e profissional */
+    background-color: #455A64;
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
@@ -9,18 +9,18 @@ body {
     flex-direction: column;
     align-items: center;
     padding: 2rem;
-    color: white; /* Cor do texto principal */
+    color: white; 
 }
 
 h1 {
-    color: #4CAF50; /* Verde para indicar movimento ou ação */
+    color: #4CAF50; 
     font-size: 2.5em;
     font-weight: bold;
     margin-bottom: 0.5em;
 }
 
 h2 {
-    color: #3e8e41; /* Verde mais escuro para subtítulos */
+    color: #3e8e41; 
     font-size: 1.8em;
     font-weight: bold;
     margin-top: 1em;
@@ -28,7 +28,7 @@ h2 {
 }
 
 a {
-    background-color: #4CAF50; /* Verde */
+    background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -40,11 +40,11 @@ a {
 }
 
 a:hover {
-    background-color: #3e8e41; /* Verde mais escuro no hover */
+    background-color: #3e8e41; 
 }
 
 form {
-    background-color: #f0f8ff; /* Azul bem claro para o fundo do formulário */
+    background-color: #f0f8ff; 
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -57,7 +57,7 @@ label {
     display: block;
     text-align: left;
     margin-bottom: 0.5em;
-    color: #333; /* Cor do texto em labels */
+    color: #333; 
 }
 
 input[type="number"] {
@@ -71,7 +71,7 @@ input[type="number"] {
 }
 
 button[type="submit"] {
-    background-color: #4CAF50; /* Verde para botões de ação */
+    background-color: #4CAF50; 
     color: white;
     padding: 12px 20px;
     border: none;
@@ -82,13 +82,13 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #3e8e41; /* Verde mais escuro no hover */
+    background-color: #3e8e41; 
 }
 
 #resultados {
     margin-top: 2em;
     padding: 1em;
-    background-color: #e9ecef; /* Cinza bem claro */
+    background-color: #e9ecef; 
     border-radius: 8px;
     width: 80%;
     max-width: 600px;
