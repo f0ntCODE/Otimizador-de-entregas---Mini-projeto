@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link th:href="@{/index.css}" rel="stylesheet">
     <title>Logística Inteligente - Problema da Mochila</title>
 </head>
 <header>
@@ -16,7 +16,7 @@
 </header>
 <body>
     <nav class="menu">
-        <a href="basic_methods.html">
+        <a th:href="@{/metodos}">
         <span class="icone">📦</span>
         Métodos Básicos
     </a>
@@ -24,7 +24,7 @@
         <span class="icone">🧬</span>
         Algoritmos Genéticos
     </a>
-    <a href="info.html">
+    <a th:href="@{/info}">
         <span class="icone">📖</span>
         Descrição do Problema
     </a>
