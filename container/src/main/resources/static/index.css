@@ -1,25 +1,23 @@
-
-body{
-    background-color:#2A5C8F;
-    margin:0;
+body {
+    background-color: #455A64; 
+    margin: 0;
     font-family: 'Segoe UI', sans-serif;
     text-align: center;
     padding: 20px;
-    min-height:90vh;
-    display:flex;
+    min-height: 90vh;
+    display: flex;
     flex-direction: column;
     align-items: center;
-    padding:2rem;
+    padding: 2rem;
 }
 
-header{
-    text-align:center;
+header {
+    text-align: center;
     margin-bottom: 2rem;
 }
 
-
-a{
-    background-color: chocolate;
+a {
+    background-color: #4CAF50; 
     font-weight: bold;
     color: white;
     border: none;
@@ -29,45 +27,39 @@ a{
     margin: auto;
     text-decoration: none;
     font-size: 16px;
-    display:inline-block;
-    margin-right:15px;
-    cursor:pointer;
+    display: inline-block;
+    margin-right: 15px;
 }
 
-a:hover{
+a:hover {
     transform: translateY(-3px);
+    background-color: #3e8e41; 
 }
 
-h1{
+h1, h2 {
     color: white;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+h1 {
     font-size: 30px;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    margin-bottom: 20px;
-}
-h2{
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    margin-bottom: 20px;
+    margin-top: 0;
 }
 
-menu{
-    display:flex;
+h2 {
+    font-size: 20px;
+}
+
+menu {
+    display: flex;
     justify-content: center;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     margin-bottom: 30px;
 }
 
-
-icone{
-    font: size 1.3em;
-    margin-right:6px;
+icone {
+    font-size: 1.3em; 
+    margin-right: 6px;
 }
-
-
