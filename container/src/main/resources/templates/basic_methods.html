@@ -3,15 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="basic_methods.css">
+ 
+    <link th:href="@{/basic_methods.css}" rel="stylesheet">
     <title>Métodos Básicos</title>
 </head>
 <body>
-    <h1>
-        Métodos Básicos
-    </h1>
-    <a th:href="@{/}">
-        Voltar
-    </a>
+    <h1>Métodos Básicos</h1>
+    <a th:href="@{/}">Voltar</a>
+
+    <form th:action="@{/gerar_problema}" method="post">
+        <label for="capacidadeMochila">Capacidade da Mochila:</label>
+        <input type="number" id="capacidadeMochila" name="capacidadeMochila" required><br><br>
+
+        <label for="numeroItens">Quantidade de Itens:</label>
+        <input type="number" id="numeroItens" name="numeroItens" required><br><br>
+
+        <button type="submit">Gerar Problema</button>
+    </form>
+
+    <h2>Resultados</h2>
+    <div id="resultados">
+        <p th:if="${resultadoPesos != null}" th:text="${resultadoPesos}">Pesos</p>
+        <p th:if="${resultadoLucros != null}" th:text="${resultadoLucros}">Lucros</p>
+        <p th:if="${resultadoAvaliado != null}" th:text="${resultadoAvaliado}">Resultado Avaliado</p>
+    </div>
 </body>
 </html>

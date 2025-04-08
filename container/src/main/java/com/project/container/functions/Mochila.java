@@ -17,9 +17,10 @@ public class Mochila {
      public static int[] gerarPeso(int capacidadeMochila, int pMax, int pMin){
 
         int[] peso = new int[capacidadeMochila];
-
+        
         for (int cont = 0; cont < capacidadeMochila; cont ++) {
             peso[cont] = (int) (Math.random() * (pMax - pMin + 1)) + pMin;
+
         }
 
         return peso;        
@@ -32,7 +33,7 @@ public class Mochila {
         for (int cont = 0; cont < numeroItens; cont ++) {
             lucro[cont] = (int) (Math.random() * (pMax - pMin + 1)) + pMin;
         }
-
+        
         return lucro;        
     }
     
@@ -54,11 +55,10 @@ public class Mochila {
                 tentativas ++;
             }
 
-            System.out.println("Lucro -> " + valorLucro);
         return solucao;
     }
 
-    public static void avaliaSolucao(int[] solucao, int[] p, int[] l, int numeroItens){
+    public static String avaliaSolucao(int[] solucao, int[] p, int[] l, int numeroItens){
         int valorPeso  = 0;
         int valorLucro = 0;
 
@@ -68,7 +68,46 @@ public class Mochila {
             valorLucro += solucao[cont] * l[cont];
         }
 
-        System.out.println("Lucro: " + valorLucro + " Peso: " + valorPeso);
+        System.out.println("Peso total: " + valorPeso + "\n Lucro total: " + valorLucro);
+
+        return "Lucro total: " + valorLucro + " Peso total: " + valorPeso;
     }
+
+    public static String[] obterResultados(int capacidadeMochila, int pMax, int pMin, int numeroItens) {
+        // Gerar pesos e lucros
+        int[] pesos = gerarPeso(numeroItens, pMax, pMin);
+        int[] lucros = gerarLucro(numeroItens, pMax, pMin);
+    
+        // Obter solução inicial
+        int[] solucao = solucaoInicial(numeroItens, pesos, lucros, capacidadeMochila);
+    
+        // Avaliar a solução
+        String resultadoAvaliado = avaliaSolucao(solucao, pesos, lucros, numeroItens);
+    
+        // Formatar os resultados
+        String resultadoPesos = "Pesos: "   + java.util.Arrays.toString(pesos);
+        String resultadoLucros = "Lucros: " + java.util.Arrays.toString(lucros);
+    
+        return new String[]{resultadoPesos, resultadoLucros, resultadoAvaliado};
+    }
+    
+
+    public int getCapacidadeMochila() {
+        return capacidadeMochila;
+    }
+
+    public void setCapacidadeMochila(int capacidadeMochila) {
+        this.capacidadeMochila = capacidadeMochila;
+    }
+
+    public int getNumeroItens() {
+        return numeroItens;
+    }
+
+    public void setNumeroItens(int numeroItens) {
+        this.numeroItens = numeroItens;
+    }
+
+    
     
 }
