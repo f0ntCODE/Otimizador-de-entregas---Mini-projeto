@@ -1,5 +1,7 @@
 package com.project.container.functions;
 
+import java.util.Arrays;
+
 public class Mochila {
 
     /*  
@@ -54,6 +56,7 @@ public class Mochila {
                 }
                 tentativas ++;
             }
+            System.out.println("Solução inicial: " + Arrays.toString(solucao));
 
         return solucao;
     }
@@ -68,9 +71,9 @@ public class Mochila {
             valorLucro += solucao[cont] * l[cont];
         }
 
-        System.out.println("Peso total: " + valorPeso + "\n Lucro total: " + valorLucro);
+        System.out.println("Peso máximo: " + valorPeso + "\n Lucro máximo: " + valorLucro);
 
-        return "Lucro total: " + valorLucro + " Peso total: " + valorPeso;
+        return "Solução inicial: " + Arrays.toString(solucao) + " \n Lucro máximo: " + valorLucro + " \n Peso máximo: " + valorPeso;
     }
 
     public static String[] obterResultados(int capacidadeMochila, int pMax, int pMin, int numeroItens) {
@@ -83,31 +86,11 @@ public class Mochila {
     
         // Avaliar a solução
         String resultadoAvaliado = avaliaSolucao(solucao, pesos, lucros, numeroItens);
-    
+            
         // Formatar os resultados
-        String resultadoPesos = "Pesos: "   + java.util.Arrays.toString(pesos);
-        String resultadoLucros = "Lucros: " + java.util.Arrays.toString(lucros);
+        String resultadoPesos = "Todos os Pesos (KG): "   + Arrays.toString(pesos);
+        String resultadoLucros = "Todos os Lucros (R$): " + Arrays.toString(lucros);
     
         return new String[]{resultadoPesos, resultadoLucros, resultadoAvaliado};
     }
-    
-
-    public int getCapacidadeMochila() {
-        return capacidadeMochila;
-    }
-
-    public void setCapacidadeMochila(int capacidadeMochila) {
-        this.capacidadeMochila = capacidadeMochila;
-    }
-
-    public int getNumeroItens() {
-        return numeroItens;
-    }
-
-    public void setNumeroItens(int numeroItens) {
-        this.numeroItens = numeroItens;
-    }
-
-    
-    
 }
