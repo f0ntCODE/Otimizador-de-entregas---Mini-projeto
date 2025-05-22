@@ -1,5 +1,6 @@
 package com.project.container.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +8,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.container.functions.Mochila;
+import com.project.container.functions.MochilaBasica;
 
 @Controller
 public class mainController {
+
+    @Autowired
+    private Mochila mochila = new MochilaBasica();
 
     //************************************Redirecionamento de páginas
 
@@ -45,7 +50,7 @@ public class mainController {
         final int pesoMax = 550;    //final = valores constantes
         final int pesoMin = 50;
 
-        String[] resultados = Mochila.obterResultados(capacidadeMochila, pesoMax, pesoMin, numeroItens);
+        String[] resultados = mochila.obterResultados(capacidadeMochila, pesoMax, pesoMin, numeroItens);
 
     // Adicionar os resultados ao modelo
         model.addAttribute("resultadoPesos", resultados[0]);
