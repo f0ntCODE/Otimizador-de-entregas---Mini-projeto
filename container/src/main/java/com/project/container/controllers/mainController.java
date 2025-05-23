@@ -61,6 +61,14 @@ public class mainController {
         return "basic_methods";
 }
 
+//em fase de implementação
+    @PostMapping("/subidaEncosta")
+    public String subidaEncosta(Model model, @RequestParam("") int capacidade, @RequestParam("") int var2){
+
+
+        return "";
+    }
+
 
 
     
