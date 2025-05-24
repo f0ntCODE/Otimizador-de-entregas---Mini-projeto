@@ -5,49 +5,49 @@ import java.util.Arrays;
 public abstract class Sucessores {
 
     private Avalia avalia;
-    private SolucaoInicial solucaoInicial;
 
     //preciso importar os valores de Avalia e de Solução inicial
-    public int[] gerarSucessores(int[] mochilaAvaliada, int[] vetorValores, int[] vetorPesos, int pesoMax,
-                                 int valorMax){
-        int[] vetorAtual = mochilaAvaliada;
-        int[] arrayValor     = vetorValores;
-        int[] arrayPeso     = vetorPesos;
+    public int[] gerarSucessores(int[] vetorAtual, int[] pesos, int[] valores, int pesoMax) {
+        int tamanhoVetor = vetorAtual.length;
+        int[] melhorVetor = Arrays.copyOf(vetorAtual, tamanhoVetor);
+        int melhorValor = Integer.parseInt(avalia.avaliaSolucao(vetorAtual, pesos, valores, tamanhoVetor));
 
-        int tamanho      = vetorAtual.length;
+        for (int i = 0; i < tamanhoVetor; i++) {
+            if (vetorAtual[i] == 1) {
+                int[] candidato = Arrays.copyOf(vetorAtual, tamanhoVetor);
+                candidato[i] = 0; // remove item i
 
-        int[] melhorVetor     = Arrays.copyOf(vetorAtual, tamanho); //cópia do vetor
-        int[] referencia = Arrays.copyOf(mochilaAvaliada, tamanho);
-        int[] pesos      = arrayPeso;
-        int[] valores    = arrayValor;
-
-        int pMax = 1;//preciso pegar o peso máximo
-        int vMax = 1;//preciso pegar do valor máximo
-
-        int vAtual = 1; //pegar do avalia
-        int pAtual = 1;//pegar do avalia
-
-        for(int i = 0; i < tamanho; i ++){
-            if(vetorAtual[i] == 1){ //se o valor no vetor atual estiver na mochila
-                vetorAtual[i] = 1 - vetorAtual[i];
-                pMax -= pesos[i];
-                vMax -= valores[i];
-
-
-
-                for (int j = 0; j < tamanho; j ++){
-                    if(vetorAtual[j] == vetorAtual[i] || vetorAtual[j] == 0){
-                        continue;
+                // Calcule peso e valor do candidato após remoção
+                int pesoCandidato = 0;
+                int valorCandidato = 0;
+                for (int k = 0; k < tamanhoVetor; k++) {
+                    if (candidato[k] == 1) {
+                        pesoCandidato += pesos[k];
+                        valorCandidato += valores[k];
                     }
-                    else{
+                }
 
-                        if((pesos[j] + pAtual) >= pesoMax){
-
+                for (int j = 0; j < tamanhoVetor; j++) {
+                    if (candidato[j] == 0 && (pesoCandidato + pesos[j]) <= pesoMax) {
+                        candidato[j] = 1; // tenta adicionar item j
+                        int valorNovo = 0;
+                        int pesoNovo = 0;
+                        for (int k = 0; k < tamanhoVetor; k++) {
+                            if (candidato[k] == 1) {
+                                valorNovo += valores[k];
+                                pesoNovo += pesos[k];
+                            }
                         }
+                        if (valorNovo > melhorValor && pesoNovo <= pesoMax) {
+                            melhorValor = valorNovo;
+                            melhorVetor = Arrays.copyOf(candidato, tamanhoVetor);
+                        }
+                        candidato[j] = 0; // desfaz adição
                     }
                 }
             }
         }
+        return melhorVetor;
     }
 
 }
