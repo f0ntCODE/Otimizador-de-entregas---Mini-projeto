@@ -50,4 +50,29 @@ public abstract class Sucessores {
         return melhorVetor;
     }
 
+    public int[] gerarUmSucessor(int[] solucaoInicial, int[] pesos, int pesoMax, int pesoAtual){
+        int[] candidato = Arrays.copyOf(solucaoInicial, solucaoInicial.length);
+
+        int posicao = (int)(Math.random() * 6); //gerar números aleatórios entre 0 e 5
+        int pAtual = pesoAtual;
+
+        candidato[posicao] = 1 - candidato[posicao];
+
+        if(candidato[posicao] == 1) {   //entre aqui se o ítem estiver colocado na mochila
+            pAtual += pesos[posicao];  //somar o peso
+
+            boolean ultrapassou = (pAtual <= pesoMax) ? false : true;
+
+            if (!ultrapassou) {    //o peso não foi ultrapassado
+                return candidato;       //retorne o candidato e interrompa o fluxo
+            }
+            else{
+                return solucaoInicial;
+            }
+        }
+
+        return candidato;
+    }
+
+
 }

@@ -11,12 +11,12 @@ public abstract class Mochila {
 
     public String[] obterResultados(int capacidadeMochila, int pMax, int pMin, int numeroItens) {
 
-        this.gerador = new Geradores(capacidadeMochila, pMax, pMin, numeroItens);
+        this.gerador = new Geradores(capacidadeMochila, numeroItens);
 
         // Gerar pesos e lucros
-        int[] pesos = gerador.gerarPeso(numeroItens, pMax, pMin);
+        int[] pesos = gerador.gerarPeso(numeroItens);
 
-        int[] lucros = gerador.gerarLucro(numeroItens, pMax, pMin);
+        int[] lucros = gerador.gerarLucro(numeroItens);
     
         // Obter solução inicial
         this.solucaoInicial = new SolucaoInicial(numeroItens, pesos, lucros, capacidadeMochila);

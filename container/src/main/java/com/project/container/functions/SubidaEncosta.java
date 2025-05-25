@@ -9,8 +9,8 @@ public class SubidaEncosta {
         int[] atual    = solucaoInicial;
         int valorAtual = valorInicial;
 
-        int[] valores = gerador.gerarLucro(6, 50, 550);//valores adaptador para a situação
-        int[] pesos   = gerador.gerarPeso(6, 50, 550);
+        int[] valores = gerador.gerarLucro(6);//valores adaptador para a situação
+        int[] pesos   = gerador.gerarPeso(6);
 
         while(true){
             int[] novoVetor = sucessores.gerarSucessores(atual, pesos, valores, 600);
@@ -34,8 +34,8 @@ public class SubidaEncosta {
         int valorAtual     = valorInicial;
         int tentativaAtual = 0;
 
-        int[] valores = gerador.gerarLucro(6, 50, 550);//valores adaptados para a situação
-        int[] pesos   = gerador.gerarPeso(6, 50, 550);
+        int[] valores = gerador.gerarLucro(6);//valores adaptados para a situação
+        int[] pesos   = gerador.gerarPeso(6);
 
         while(true){
             int[] novoVetor = sucessores.gerarSucessores(atual, pesos, valores, 600);
