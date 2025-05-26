@@ -4,17 +4,19 @@ public class SubidaEncosta {
     private Sucessores sucessores;
     private Geradores gerador;
     private Avalia avalia;
+    private SolucaoInicial solucaoInicial;
 
     public int[] subidaEncosta(int[] solucaoInicial, int valorInicial){
         int[] atual    = solucaoInicial;
         int valorAtual = valorInicial;
 
-        int[] valores = gerador.gerarLucro(6);//valores adaptador para a situação
-        int[] pesos   = gerador.gerarPeso(6);
+        int[] valores = gerador.gerarLucro();//valores adaptador para a situação
+        int[] pesos   = gerador.gerarPeso();
 
         while(true){
             int[] novoVetor = sucessores.gerarSucessores(atual, pesos, valores, 600);
-            int valorNovo   = Integer.parseInt(avalia.avaliaSolucao(novoVetor, pesos, valores, 6));
+            int[]avaliados   = avalia.avaliaSolucao(novoVetor, pesos, valores, 6);
+            int valorNovo = avaliados[1];
 
             if(valorNovo <= valorAtual){
 
@@ -34,12 +36,14 @@ public class SubidaEncosta {
         int valorAtual     = valorInicial;
         int tentativaAtual = 0;
 
-        int[] valores = gerador.gerarLucro(6);//valores adaptados para a situação
-        int[] pesos   = gerador.gerarPeso(6);
+        int[] valores = gerador.gerarLucro();//valores adaptados para a situação
+        int[] pesos   = gerador.gerarPeso();
 
         while(true){
+
             int[] novoVetor = sucessores.gerarSucessores(atual, pesos, valores, 600);
-            int valorNovo   = Integer.parseInt(avalia.avaliaSolucao(novoVetor, pesos, valores, 6));
+            //int vNovo = new SolucaoInicial()
+            int valorNovo   = avalia.avaliaSolucao(novoVetor, pesos, valores, 6);
 
             if(valorNovo <= valorAtual){
                 if(tentativaAtual > limiteTentativa) {

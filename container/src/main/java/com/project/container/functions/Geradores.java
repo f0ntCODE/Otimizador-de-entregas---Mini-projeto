@@ -11,7 +11,7 @@ public class Geradores {
         this.numeroItens = numeroItens;
     }
 
-    public int[] gerarPeso(int numeroItens){
+    public int[] gerarPeso(){
 
         int[] peso = new int[numeroItens];
         
@@ -23,7 +23,7 @@ public class Geradores {
         return peso;        
     }
 
-    public int[] gerarLucro(int numeroItens){
+    public int[] gerarLucro(){
 
         int[] lucro = new int[numeroItens];
 

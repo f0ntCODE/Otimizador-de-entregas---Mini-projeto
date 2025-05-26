@@ -19,7 +19,7 @@ public class Avalia {
         this.numeroItens = numeroItens;
     }
 
-    public String avaliaSolucao(int[] solucao, int[] p, int[] l, int numeroItens){
+    public int[] avaliaSolucao(int[] solucao, int[] p, int[] l, int numeroItens){
         int valorPeso  = 0;
         int valorLucro = 0;
 
@@ -31,7 +31,7 @@ public class Avalia {
 
         System.out.println("Peso máximo: " + valorPeso + "\n Lucro máximo: " + valorLucro);
 
-        return "Solução inicial: " + Arrays.toString(solucao) + " \n Lucro máximo: " + valorLucro + " \n Peso máximo: " + valorPeso;
+        return new int[]{valorPeso, valorLucro};
     }
 
 }

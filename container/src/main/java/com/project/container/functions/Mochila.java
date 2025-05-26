@@ -2,36 +2,38 @@ package com.project.container.functions;
 
 import java.util.Arrays;
 
-public abstract class Mochila {
+public class Mochila {
 
     private Geradores gerador;
     private Avalia avalia;
     private SolucaoInicial solucaoInicial;
 
+    private int capacidadeMochila;
+    private int pMax;
+    private int pMin;
+    private int numeroIntens;
 
-    public String[] obterResultados(int capacidadeMochila, int pMax, int pMin, int numeroItens) {
+    public Mochila(int capacidadeMochila, int pMax, int pMin, int numeroIntens) {
+        this.capacidadeMochila = capacidadeMochila;
+        this.pMax = pMax;
+        this.pMin = pMin;
+        this.numeroIntens = numeroIntens;
 
-        this.gerador = new Geradores(capacidadeMochila, numeroItens);
+        new Geradores(capacidadeMochila, numeroIntens);
+    }
 
-        // Gerar pesos e lucros
-        int[] pesos = gerador.gerarPeso(numeroItens);
+    public int[] obterPeso(){
 
-        int[] lucros = gerador.gerarLucro(numeroItens);
-    
-        // Obter solução inicial
-        this.solucaoInicial = new SolucaoInicial(numeroItens, pesos, lucros, capacidadeMochila);
+        int[] pesos = gerador.gerarPeso();
 
-        int[] solucao = solucaoInicial.gerarSolucaoInicial(numeroItens, pesos, lucros, capacidadeMochila);
-    
-        this.avalia = new Avalia(solucao, pesos, lucros, numeroItens);
+        return pesos;
+    }
 
-        // Avaliar a solução
-        String resultadoAvaliado = avalia.avaliaSolucao(solucao, pesos, lucros, numeroItens);
-            
-        // Formatar os resultados
-        String resultadoPesos = "Todos os Pesos (KG): "   + Arrays.toString(pesos);
-        String resultadoLucros = "Todos os Lucros (R$): " + Arrays.toString(lucros);
-    
-        return new String[]{resultadoPesos, resultadoLucros, resultadoAvaliado};
+    public int[] obterLucros(){
+        this.gerador = new Geradores(capacidadeMochila, numeroIntens);
+
+        int[] lucros = gerador.gerarPeso();
+
+        return lucros;
     }
 }

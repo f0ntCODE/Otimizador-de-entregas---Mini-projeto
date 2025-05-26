@@ -8,14 +8,14 @@ public class SolucaoInicial {
     private int[] lucros;
     private int capacidadeMochila;
 
-    public SolucaoInicial(int numeroItens, int[] pesos, int[] lucros, int capacidadeMochila) {
-        this.numeroItens = numeroItens;
-        this.pesos = pesos;
-        this.lucros = lucros;
+    public SolucaoInicial(int capacidadeMochila, int[] lucros, int[] pesos, int numeroItens) {
         this.capacidadeMochila = capacidadeMochila;
+        this.lucros = lucros;
+        this.pesos = pesos;
+        this.numeroItens = numeroItens;
     }
 
-    public int[] gerarSolucaoInicial(int numeroItens, int[] p, int[] l, int capacidadeMochila){
+    public int[] gerarSolucaoInicial(){
         int[] solucao     = new int[numeroItens];
         int valorPeso     = 0;
         int valorLucro    = 0;
@@ -25,10 +25,10 @@ public class SolucaoInicial {
             while(valorPeso < capacidadeMochila && tentativas < maxTentativas){
                 int i = (int) (Math.random() * numeroItens);
 
-                if (solucao[i] == 0 && (valorPeso + p[i]) <= capacidadeMochila) {
+                if (solucao[i] == 0 && (valorPeso + pesos[i]) <= capacidadeMochila) {
                     solucao[i] = 1;
-                    valorPeso  += p[i];
-                    valorLucro += l[i];
+                    valorPeso  += pesos[i];
+                    valorLucro += lucros[i];
                 }
                 tentativas ++;
             }

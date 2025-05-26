@@ -1,5 +1,6 @@
 package com.project.container.controllers;
 
+import com.project.container.functions.SubidaEncosta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.project.container.functions.Mochila;
 import com.project.container.functions.MochilaBasica;
 
+import java.util.Arrays;
+
 @Controller
 public class mainController {
 
     @Autowired
-    private Mochila mochila = new MochilaBasica();
+    private Mochila mochila;
+    private SubidaEncosta encosta;
 
     //************************************Redirecionamento de páginas
 
@@ -50,12 +54,12 @@ public class mainController {
         final int pesoMax = 550;    //final = valores constantes
         final int pesoMin = 50;
 
-        String[] resultados = mochila.obterResultados(capacidadeMochila, pesoMax, pesoMin, numeroItens);
+        String[] res = resultados(capacidadeMochila, numeroItens, pesoMin, pesoMax);
 
     // Adicionar os resultados ao modelo
-        model.addAttribute("resultadoPesos", resultados[0]);
-        model.addAttribute("resultadoLucros", resultados[1]);
-        model.addAttribute("resultadoAvaliado", resultados[2]);
+        model.addAttribute("resultadoPesos", res[0]);
+        model.addAttribute("resultadoLucros", res[1]);
+        model.addAttribute("resultadoAvaliado", res[2]);
 
     // Retornar a mesma página do formulário
         return "basic_methods";
@@ -63,15 +67,39 @@ public class mainController {
 
 //em fase de implementação
     @PostMapping("/subidaEncosta")
-    public String subidaEncosta(Model model, @RequestParam("") int capacidade, @RequestParam("") int var2){
+    public String subidaEncosta(Model model, @RequestParam("") int capacidade,
+                                @RequestParam("capacidadeMochila") int capacidadeMochila,
+                                @RequestParam("numeroItens") int numeroItens){
 
+        final int pesoMax = 550;    //final = valores constantes
+        final int pesoMin = 50;
+
+        new Mochila(capacidadeMochila, pesoMax, pesoMin, numeroItens);
+
+        int valorTotal = resultados[1];
+
+        int[] solucaoInicial = resultados[2];
+
+
+        int[] valorEncosta = encosta.subidaEncosta(solucaoInicial, valorTotal);
 
         return "";
     }
 
+    @PostMapping("/subidaEncostaTentativa")
+    public String subidaComTentativa(Model model, @RequestParam("") int capacidade,
+                                     @RequestParam("") int tMax){
 
+        return "";
+    }
 
-    
-    
+    public String[] resultados(int capacidadeMochila, int pesoMax, int pesoMin, int numeroItens){
+
+        new Mochila(capacidadeMochila, pesoMax, pesoMin, numeroItens);
+
+        mochila.
+
+        return resultado;
+    }
     
 }
