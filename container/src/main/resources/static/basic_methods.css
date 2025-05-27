@@ -25,7 +25,7 @@ body {
     text-align: center;
 }
 
-/* Centralizar e limitar largura dos títulos, formulário e resultados */
+
 h1, h2, form, #resultados, a {
     max-width: 700px;
     width: 100%;
@@ -38,7 +38,7 @@ h1 {
     font-weight: 700;
 }
 
-/* Link "Voltar" estilizado como botão */
+
 a {
     display: inline-block;
     margin-bottom: 2rem;

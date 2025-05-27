@@ -33,6 +33,12 @@ public class mainController {
 
         return "info";
     }
+    @GetMapping("/genetic")
+    public String GeneticPage(){
+
+        
+        return "genetic_algorithm";
+    }
 
     /* AÇÃO */
 
