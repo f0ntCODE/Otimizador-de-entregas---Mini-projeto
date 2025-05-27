@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.container.functions.Mochila;
+import com.project.container.facade.Mochila;
 
 @Controller
 public class mainController {
@@ -42,7 +42,10 @@ public class mainController {
                             Model model) {
 
     // Obter os resultados da classe Mochila
-        String[] resultados = Mochila.obterResultados(capacidadeMochila, 550, 50, numeroItens);
+        final int pesoMax = 550;    //final = valores constantes
+        final int pesoMin = 50;
+
+        String[] resultados = Mochila.obterResultados(capacidadeMochila, pesoMax, pesoMin, numeroItens);
 
     // Adicionar os resultados ao modelo
         model.addAttribute("resultadoPesos", resultados[0]);

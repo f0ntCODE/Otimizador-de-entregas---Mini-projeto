@@ -1,31 +1,205 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
- 
-    <link th:href="@{/basic_methods.css}" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link th:href="@{/basic_methods.css}" rel="stylesheet" />
     <title>Métodos Básicos</title>
+
 </head>
 <body>
-    <h1>Métodos Básicos</h1>
-    <a th:href="@{/}">Voltar</a>
+<h1>Métodos Básicos</h1>
+<a th:href="@{/}">Voltar</a>
 
-    <form th:action="@{/gerar_problema}" method="post">
-        <label for="capacidadeMochila">Capacidade da Mochila:</label>
-        <input type="number" id="capacidadeMochila" name="capacidadeMochila" required><br><br>
+<form th:action="@{/gerar_problema}" method="post" id="form-gerar-problema">
+    <label for="capacidadeMochila">Capacidade da Mochila:</label>
+    <input type="number" id="capacidadeMochila" name="capacidadeMochila" required /><br /><br />
 
-        <label for="numeroItens">Quantidade de Itens:</label>
-        <input type="number" id="numeroItens" name="numeroItens" required><br><br>
+    <label for="numeroItens">Quantidade de Itens:</label>
+    <input type="number" id="numeroItens" name="numeroItens" required /><br /><br />
 
-        <button type="submit">Gerar Problema</button>
-    </form>
+    <button type="submit">Gerar Problema</button>
+</form>
 
-    <h2>Resultados</h2>
-    <div id="resultados">
-        <p th:if="${resultadoPesos != null}" th:text="${resultadoPesos}">Pesos</p>
-        <p th:if="${resultadoLucros != null}" th:text="${resultadoLucros}">Lucros</p>
-        <p th:if="${resultadoAvaliado != null}" th:text="${resultadoAvaliado}">Resultado Avaliado</p>
+<h2>Escolha o método</h2>
+<div style="max-width:700px; margin-bottom:2rem; text-align:left;">
+    <label for="metodoSelect" style="font-weight:600; color: var(--cor-texto); display:block; margin-bottom:0.5rem;">Método:</label>
+    <select id="metodoSelect" style="width: 100%; max-width: 300px; padding: 0.6rem; border-radius: 12px; border:none; background:#37474F; color: var(--cor-texto); font-size: 1rem;">
+        <option value="subidaEncosta">Subida de Encosta</option>
+        <option value="subidaEncostaTentativas">Subida de Encosta com tentativas</option>
+        <option value="temperaSimulada">Tempera Simulada</option>
+        <option value="todos">Todos</option>
+    </select>
+    <button id="executarBtn" style="margin-top: 1rem; background-color: var(--cor-primaria); color: var(--cor-texto); border:none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: background-color 0.3s ease, transform 0.2s ease;">Executar</button>
+</div>
+
+<h2>Resultados</h2>
+<div id="resultados">
+    <p th:if="${resultadoPesos != null}" th:text="${resultadoPesos}">Pesos</p>
+    <p th:if="${resultadoLucros != null}" th:text="${resultadoLucros}">Lucros</p>
+    <p th:if="${resultadoAvaliado != null}" th:text="${resultadoAvaliado}">Resultado Avaliado</p>
+</div>
+
+<!-- Popup Subida de Encosta com Tentativas -->
+<div id="popupTentativas" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloTentativas">
+    <div class="popup">
+        <h3 id="tituloTentativas">Número máximo de tentativas</h3>
+        <label for="inputTentativas">Informe o número máximo de tentativas:</label>
+        <input type="number" id="inputTentativas" min="1" required />
+        <div class="popup-buttons">
+            <button id="cancelarTentativas">Cancelar</button>
+            <button id="confirmarTentativas">Confirmar</button>
+        </div>
     </div>
+</div>
+
+<!-- Popup Tempera Simulada -->
+<div id="popupTempera" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloTempera">
+    <div class="popup">
+        <h3 id="tituloTempera">Parâmetros da Tempera Simulada</h3>
+        <label for="tempInicial">Temperatura Inicial:</label>
+        <input type="number" id="tempInicial" step="any" required />
+        <label for="tempFinal">Temperatura Final:</label>
+        <input type="number" id="tempFinal" step="any" required />
+        <label for="fatorRedutor">Fator Redutor:</label>
+        <input type="number" id="fatorRedutor" step="any" min="0" max="1" required />
+        <div class="popup-buttons">
+            <button id="cancelarTempera">Cancelar</button>
+            <button id="confirmarTempera">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const metodoSelect = document.getElementById('metodoSelect');
+    const executarBtn = document.getElementById('executarBtn');
+
+    const popupTentativas = document.getElementById('popupTentativas');
+    const inputTentativas = document.getElementById('inputTentativas');
+    const cancelarTentativas = document.getElementById('cancelarTentativas');
+    const confirmarTentativas = document.getElementById('confirmarTentativas');
+
+    const popupTempera = document.getElementById('popupTempera');
+    const tempInicial = document.getElementById('tempInicial');
+    const tempFinal = document.getElementById('tempFinal');
+    const fatorRedutor = document.getElementById('fatorRedutor');
+    const cancelarTempera = document.getElementById('cancelarTempera');
+    const confirmarTempera = document.getElementById('confirmarTempera');
+
+    // Funções simuladas para cada método
+    function executarSubidaEncosta() {
+        alert('Executando Subida de Encosta');
+        // Aqui você pode adicionar a chamada real do método
+    }
+
+    function executarSubidaEncostaTentativas(maxTentativas) {
+        alert('Executando Subida de Encosta com tentativas. Máximo: ' + maxTentativas);
+        // Aqui você pode adicionar a chamada real do método com maxTentativas
+    }
+
+    function executarTemperaSimulada(tempIni, tempFim, fator) {
+        alert(`Executando Tempera Simulada com:\nTemperatura Inicial: ${tempIni}\nTemperatura Final: ${tempFim}\nFator Redutor: ${fator}`);
+        // Aqui você pode adicionar a chamada real do método com os parâmetros
+    }
+
+    function executarTodos() {
+        alert('Executando todos os métodos');
+        // Aqui você pode adicionar a chamada real para executar todos os métodos
+    }
+
+    // Mostrar popup
+    function abrirPopup(popup) {
+        popup.style.display = 'flex';
+    }
+
+    // Fechar popup
+    function fecharPopup(popup) {
+        popup.style.display = 'none';
+    }
+
+    // Evento do botão executar
+    executarBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        const metodo = metodoSelect.value;
+
+        if (metodo === 'subidaEncosta') {
+            executarSubidaEncosta();
+        } else if (metodo === 'subidaEncostaTentativas') {
+            abrirPopup(popupTentativas);
+            inputTentativas.value = '';
+            inputTentativas.focus();
+        } else if (metodo === 'temperaSimulada') {
+            abrirPopup(popupTempera);
+            tempInicial.value = '';
+            tempFinal.value = '';
+            fatorRedutor.value = '';
+            tempInicial.focus();
+        } else if (metodo === 'todos') {
+            executarTodos();
+        }
+    });
+
+    // Cancelar popup tentativas
+    cancelarTentativas.addEventListener('click', (e) => {
+        e.preventDefault();
+        fecharPopup(popupTentativas);
+    });
+
+    // Confirmar popup tentativas
+    confirmarTentativas.addEventListener('click', (e) => {
+        e.preventDefault();
+        const maxTent = parseInt(inputTentativas.value, 10);
+        if (isNaN(maxTent) || maxTent < 1) {
+            alert('Por favor, insira um número válido maior ou igual a 1.');
+            inputTentativas.focus();
+            return;
+        }
+        fecharPopup(popupTentativas);
+        executarSubidaEncostaTentativas(maxTent);
+    });
+
+    // Cancelar popup tempera
+    cancelarTempera.addEventListener('click', (e) => {
+        e.preventDefault();
+        fecharPopup(popupTempera);
+    });
+
+    // Confirmar popup tempera
+    confirmarTempera.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tIni = parseFloat(tempInicial.value);
+        const tFim = parseFloat(tempFinal.value);
+        const fator = parseFloat(fatorRedutor.value);
+
+        if (isNaN(tIni)) {
+            alert('Informe uma temperatura inicial válida.');
+            tempInicial.focus();
+            return;
+        }
+        if (isNaN(tFim)) {
+            alert('Informe uma temperatura final válida.');
+            tempFinal.focus();
+            return;
+        }
+        if (isNaN(fator) || fator < 0 || fator > 1) {
+            alert('Informe um fator redutor válido entre 0 e 1.');
+            fatorRedutor.focus();
+            return;
+        }
+
+        fecharPopup(popupTempera);
+        executarTemperaSimulada(tIni, tFim, fator);
+    });
+
+    // Fechar popup ao clicar fora da caixa
+    [popupTentativas, popupTempera].forEach(popup => {
+        popup.addEventListener('click', (e) => {
+            if (e.target === popup) {
+                fecharPopup(popup);
+            }
+        });
+    });
+</script>
 </body>
 </html>
