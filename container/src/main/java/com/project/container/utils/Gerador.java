@@ -3,9 +3,9 @@ package com.project.container.utils;
 //classe que vai gerar os valores necessários
 
 import com.project.container.model.ObterResultado_Model;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
+
 public class Gerador {
 
     private int capacidadeMochila;
@@ -88,6 +88,60 @@ public class Gerador {
         verificador.verificarSolucaoInicial();
 
         return solucaoInicial;
+    }
+
+    public int[] gerarSucessores(){
+        //recursos
+        int tamanhoVetor = resultado.getTamanhoVetor();
+        int melhorValor = resultado.getSomaLucro();
+        int pesoMax = resultado.getPesoMaximo();
+
+        //arrays
+        int[] pesos = resultado.getPesos();
+        int[] lucros = resultado.getValores();
+        int[] solucaoAtual = resultado.getSolucaoInicial();
+        int[] melhorVetor = Arrays.copyOf(solucaoAtual, tamanhoVetor);
+
+
+        for (int i = 0; i < tamanhoVetor; i++) {
+            if (solucaoAtual[i] == 1) {
+                int[] candidato = Arrays.copyOf(solucaoAtual, tamanhoVetor);
+                candidato[i] = 0; // remove item i
+
+                // Calcule peso e valor do candidato após remoção
+                int pesoCandidato = 0;
+                int valorCandidato = 0;
+                for (int k = 0; k < tamanhoVetor; k++) {
+                    if (candidato[k] == 1) {
+                        pesoCandidato += pesos[k];
+                        valorCandidato += lucros[k];
+                    }
+                }
+
+                for (int j = 0; j < tamanhoVetor; j++) {
+                    if (candidato[j] == 0 && (pesoCandidato + pesos[j]) <= pesoMax) {
+                        candidato[j] = 1; // tenta adicionar item j
+                        int valorNovo = 0;
+                        int pesoNovo = 0;
+                        for (int k = 0; k < tamanhoVetor; k++) {
+                            if (candidato[k] == 1) {
+                                valorNovo += lucros[k];
+                                pesoNovo += pesos[k];
+                            }
+                        }
+                        if (valorNovo > melhorValor && pesoNovo <= pesoMax) {
+                            melhorValor = valorNovo;
+                            melhorVetor = Arrays.copyOf(candidato, tamanhoVetor);
+                        }
+                        candidato[j] = 0; // desfaz adição
+                    }
+                }
+            }
+        }
+
+        resultado.setSucessores(melhorVetor);
+        return melhorVetor;
+
     }
 
 }

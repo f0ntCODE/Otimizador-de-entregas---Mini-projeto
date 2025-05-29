@@ -16,6 +16,10 @@ public class Verificador {
 
     public void verificarPeso(){System.out.println("VERIFICADOR DIZ-> Pesos salvos: " + Arrays.toString(resultado.getPesos()));}
 
+    public void verificarPesoMaximo(){System.out.println("VERIFICADOR DIZ-> Peso máximo: " + resultado.getPesoMaximo());}
+
+    public void verificarPesoMinimo(){System.out.println("VERIFICADOR DIZ-> Peso mínimo: " + resultado.getPesoMinimo());}
+
     public void verificarLucros(){System.out.println("VERIFICADOR DIZ-> Lucros salvos: " + Arrays.toString(resultado.getValores()));}
 
     public void verificarSolucaoInicial(){System.out.println("VERIFICADOR DIZ-> Solucao inicial salva: " + Arrays.toString(resultado.getSolucaoInicial()));}

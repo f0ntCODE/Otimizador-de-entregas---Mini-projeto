@@ -66,5 +66,12 @@ public class mainController {
         model.addAttribute("solucaoInicial", Arrays.toString(resultadoModel.getSolucaoInicial()));
     // Retornar a mesma página do formulário
         return "basic_methods";
-}
+    }
+
+    @GetMapping("/subidaEncosta")
+    public String executarSubidaEnconsta(@RequestParam("capacidadeMochila") int capacidadeMochila,
+                                         @RequestParam("numeroItens") int numeroItens,
+                                         Model model){
+
+    }
 }
