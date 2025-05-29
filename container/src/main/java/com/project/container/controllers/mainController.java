@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.project.container.facade.Mochila;
 
+import java.util.Arrays;
+
 @Controller
 public class mainController {
+
+
     private Mochila mochila;
-    private ObterResultado_Model resultadoModel;
 
     //************************************Redirecionamento de páginas
 
@@ -48,19 +51,20 @@ public class mainController {
         final int pesoMax = 550;    //final = valores constantes
         final int pesoMin = 50;
 
-        new Mochila(capacidadeMochila, pesoMax, pesoMin, numeroItens);
+        mochila = new Mochila(capacidadeMochila, pesoMax, pesoMin, numeroItens);
 
-        mochila.executarMetodoBasico();
+        int[] dados = mochila.executarMetodoBasico();
+        ObterResultado_Model resultadoModel = mochila.getSolucaoInicial();
 
-        model.addAttribute("lucro", resultadoModel.getSomaLucro());
-        model.addAttribute("peso", resultadoModel.getSomaPeso());
+        //para fins de debug
+        System.out.println("CONTROLLER DIZ -> peso: " + dados[1]);
+        System.out.println("CONTROLLER DIZ -> lucro: " + dados[0]);
+        System.out.println("CONTROLLER DIZ: -> solução inicial" + Arrays.toString(resultadoModel.getSolucaoInicial()));
+
+        model.addAttribute("lucro", dados[0]);
+        model.addAttribute("peso", dados[1]);
+        model.addAttribute("solucaoInicial", Arrays.toString(resultadoModel.getSolucaoInicial()));
     // Retornar a mesma página do formulário
         return "basic_methods";
 }
-
-
-
-    
-    
-    
 }

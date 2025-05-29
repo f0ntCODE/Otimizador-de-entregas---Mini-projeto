@@ -3,7 +3,7 @@ package com.project.container.model;
 import org.springframework.stereotype.Component;
 
 //modelo para adquirir os dados
-@Component
+
 public class ObterResultado_Model {
     //dos geradores de peso e valor
     private int[]   pesos;

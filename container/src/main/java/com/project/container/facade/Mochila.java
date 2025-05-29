@@ -6,7 +6,8 @@ import com.project.container.utils.Gerador;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.util.Arrays;
+
 public class Mochila {
     /*  
      * VARIÁVEIS
@@ -22,28 +23,32 @@ public class Mochila {
         this.pesoMax = pesoMax;
         this.pesoMin = pesoMin;
         this.numeroItens = numeroItens;
+
+        this.resultado = new ObterResultado_Model();
      }
 
 
-     public void executarMetodoBasico(){
-        this.gerador = new Gerador(capacidadeMochila, numeroItens);
+     public int[] executarMetodoBasico() throws NullPointerException{
+        this.gerador = new Gerador(capacidadeMochila, numeroItens, resultado);
+
+        resultado.setTamanhoVetor(numeroItens);//armazenar o tamanho do vetor
 
         int[] solucao = gerador.gerarSolucaoInicial();
 
-         System.out.println("Resultado da solucao: " + solucao);
+         System.out.println("Resultado da solucao: " + Arrays.toString(solucao));
 
          resultado.setSolucaoInicial(solucao); //salvar no modelo
-         int[] avalia = avaliador.avaliar();//ativar o avalia
 
-         try {
-             resultado.setSomaLucro(avalia[0]);
-             resultado.setSomaPeso(avalia[1]);
-         }
-         catch (Exception ex){
-             System.err.println("ERRO: problema ao salvar itens no modelo. CLASSE: MOCHILA");
-             ex.printStackTrace();
-         }
-         //return avalia; //lembre-se: posição 0 = lucro; posição 1 = peso
+         avaliador = new Avaliador(resultado);
+
+         int[] resultados = avaliador.avaliar();//ativar o avalia
+
+         return resultados;//lembre-se: posição 0 = lucro; posição 1 = peso
+     }
+
+     //obter o modelo de dados
+     public ObterResultado_Model getSolucaoInicial(){
+         return this.resultado;
      }
     
 }

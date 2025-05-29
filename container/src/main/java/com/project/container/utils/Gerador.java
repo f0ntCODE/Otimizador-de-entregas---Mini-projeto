@@ -6,7 +6,6 @@ import com.project.container.model.ObterResultado_Model;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-@Component
 public class Gerador {
 
     private int capacidadeMochila;
@@ -15,11 +14,13 @@ public class Gerador {
     private Verificador verificador;
 
 
-    public Gerador(int capacidadeMochila, int numeroItens) {
+    public Gerador(int capacidadeMochila, int numeroItens, ObterResultado_Model resultado) {
         this.capacidadeMochila = capacidadeMochila;
         this.numeroItens = numeroItens;
 
-        resultado = new ObterResultado_Model();
+        this.resultado = resultado;
+        this.verificador = new Verificador(resultado);
+
         gerarPeso();
         gerarLucro();
 

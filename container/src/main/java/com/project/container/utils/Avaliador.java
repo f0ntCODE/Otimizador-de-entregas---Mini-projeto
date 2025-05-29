@@ -3,18 +3,17 @@ package com.project.container.utils;
 //classe avalia
 
 import com.project.container.model.ObterResultado_Model;
-import org.springframework.stereotype.Component;
 
-@Component
 public class Avaliador {
 
     //instâncias
     private ObterResultado_Model resultados;
     private Verificador verificador;
 
-    public Avaliador(){
+    public Avaliador(ObterResultado_Model resultados){
 
-        this.resultados = new ObterResultado_Model();
+        this.resultados = resultados;
+        this.verificador = new Verificador(resultados);
     }
 
     public int[] avaliar(){
@@ -36,9 +35,15 @@ public class Avaliador {
 
         System.out.println("Peso máximo: " + valorPesoAtual + "\n Lucro máximo: " + valorLucroAtual);
 
+        resultados.setSomaLucro(valorLucroAtual);
+        System.out.println("DA CLASSE AVAIADOR:" + resultados.getSomaLucro());
+
+        resultados.setSomaPeso(valorPesoAtual);
+
         int[] conjunto = new int[]{valorLucroAtual, valorPesoAtual};
 
         resultados.setAvaliado(conjunto); //armazenar
+
 
         verificador.verificarResultadosAvaliados();
 
