@@ -3,9 +3,10 @@ package com.project.container.utils;
 //classe que vai gerar os valores necessários
 
 import com.project.container.model.ObterResultado_Model;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
-
+@Component
 public class Gerador {
 
     private int capacidadeMochila;

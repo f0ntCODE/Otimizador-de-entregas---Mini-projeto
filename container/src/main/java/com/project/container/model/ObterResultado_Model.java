@@ -1,7 +1,9 @@
 package com.project.container.model;
 
-//modelo para adquirir os dados
+import org.springframework.stereotype.Component;
 
+//modelo para adquirir os dados
+@Component
 public class ObterResultado_Model {
     //dos geradores de peso e valor
     private int[]   pesos;
@@ -10,6 +12,8 @@ public class ObterResultado_Model {
     private int[] avaliado;
 
     private int tamanhoVetor;
+    private int somaPeso;
+    private int somaLucro;
 
     public ObterResultado_Model() {}//construtor
 
@@ -51,5 +55,21 @@ public class ObterResultado_Model {
 
     public void setAvaliado(int[] avaliado) {
         this.avaliado = avaliado;
+    }
+
+    public int getSomaPeso() {
+        return somaPeso;
+    }
+
+    public void setSomaPeso(int somaPeso) {
+        this.somaPeso = somaPeso;
+    }
+
+    public int getSomaLucro() {
+        return somaLucro;
+    }
+
+    public void setSomaLucro(int somaLucro) {
+        this.somaLucro = somaLucro;
     }
 }

@@ -3,7 +3,9 @@ package com.project.container.utils;
 //classe avalia
 
 import com.project.container.model.ObterResultado_Model;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Avaliador {
 
     //instâncias

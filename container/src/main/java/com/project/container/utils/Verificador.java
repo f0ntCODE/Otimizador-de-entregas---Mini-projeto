@@ -1,9 +1,11 @@
 package com.project.container.utils;
 
 import com.project.container.model.ObterResultado_Model;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 
+@Component
 public class Verificador {
 
     private ObterResultado_Model resultado;
