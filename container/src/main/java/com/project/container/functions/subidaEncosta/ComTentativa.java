@@ -5,14 +5,13 @@ import com.project.container.utils.Avaliador;
 import com.project.container.utils.Gerador;
 import com.project.container.utils.Verificador;
 
-public class SemTentativa {
-
+public class ComTentativa {
     private ObterResultado_Model resultados;
     private Verificador verificador;
     private Gerador gerador;
     private Avaliador avaliador;
 
-    public SemTentativa(ObterResultado_Model resultados){
+    public ComTentativa(ObterResultado_Model resultados){
         this.resultados  = resultados;//obter acesso ao modelo
         this.verificador = new Verificador(resultados); //verificar os itens existentes do modelo atual
         this.gerador     = new Gerador(resultados.getPesoMaximo(), resultados.getTamanhoVetor(), resultados);
@@ -20,29 +19,39 @@ public class SemTentativa {
 
     }
 
-    public int[] subidaEncosta(){
-        int[] atual    = resultados.getSolucaoInicial();
-        int valorAtual = resultados.getSomaLucro();
+    public int[] subidaComTentativa(){
+        final int limiteTentativa = resultados.getMaxTentativas();
 
-        int[] valores = resultados.getValores();//valores adaptados para a situação
-        int[] pesos   = resultados.getPesos();
+        int[] atual        = resultados.getSolucaoInicial();
+        int valorAtual     = resultados.getSomaLucro();
+        int tentativaAtual = 0;
+
+        int[] valores = gerador.gerarLucro();//valores adaptados para a situação
+        int[] pesos   = gerador.gerarPeso();
 
         while(true){
+
             int[] novoVetor = gerador.gerarSucessores();
-            int[]avaliados   = avaliador.avaliar();
-            int valorNovo = avaliados[0]; //pegar o lucro
+            int[] avalia   = avaliador.avaliar();
+
+            int valorNovo = avalia[0];
 
             if(valorNovo <= valorAtual){
+                if(tentativaAtual > limiteTentativa) {
 
-                resultados.setSubidaEncosta(atual);
 
-                return atual;
+                    return atual;
+                }
+                else{
+                    tentativaAtual ++;
+                }
             }
             else{
-                atual      = novoVetor;
-                valorAtual = valorNovo;
+                atual          = novoVetor;
+                valorAtual     = valorNovo;
+                tentativaAtual = 0;
             }
         }
     }
-
 }
+

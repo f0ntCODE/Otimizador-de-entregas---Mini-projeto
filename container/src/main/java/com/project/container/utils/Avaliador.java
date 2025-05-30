@@ -36,7 +36,7 @@ public class Avaliador {
         System.out.println("Peso máximo: " + valorPesoAtual + "\n Lucro máximo: " + valorLucroAtual);
 
         resultados.setSomaLucro(valorLucroAtual);
-        System.out.println("DA CLASSE AVAIADOR:" + resultados.getSomaLucro());
+        System.out.println("DA CLASSE AVALIADOR:" + resultados.getSomaLucro());
 
         resultados.setSomaPeso(valorPesoAtual);
 

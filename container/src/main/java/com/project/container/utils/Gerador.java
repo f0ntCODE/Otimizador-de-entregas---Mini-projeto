@@ -91,6 +91,7 @@ public class Gerador {
     }
 
     public int[] gerarSucessores(){
+
         //recursos
         int tamanhoVetor = resultado.getTamanhoVetor();
         int melhorValor = resultado.getSomaLucro();

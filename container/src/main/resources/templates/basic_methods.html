@@ -23,14 +23,18 @@
 
 <h2>Escolha o método</h2>
 <div style="max-width:700px; margin-bottom:2rem; text-align:left;">
-    <label for="metodoSelect" style="font-weight:600; color: var(--cor-texto); display:block; margin-bottom:0.5rem;">Método:</label>
-    <select id="metodoSelect" style="width: 100%; max-width: 300px; padding: 0.6rem; border-radius: 12px; border:none; background:#37474F; color: var(--cor-texto); font-size: 1rem;">
-        <option value="subidaEncosta">Subida de Encosta</option>
-        <option value="subidaEncostaTentativas">Subida de Encosta com tentativas</option>
-        <option value="temperaSimulada">Tempera Simulada</option>
-        <option value="todos">Todos</option>
-    </select>
-    <button id="executarBtn" style="margin-top: 1rem; background-color: var(--cor-primaria); color: var(--cor-texto); border:none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: background-color 0.3s ease, transform 0.2s ease;">Executar</button>
+    <form action="/metodo" method="get" id="formMetodo">
+
+        <label for="metodoSelect" style="font-weight:600; color: var(--cor-texto); display:block; margin-bottom:0.5rem;">Método:</label>
+        <select id="metodoSelect" name="opcaoSelecionada" style="width: 100%; max-width: 300px; padding: 0.6rem; border-radius: 12px; border:none; background:#37474F; color: var(--cor-texto); font-size: 1rem;">
+            <option th:value="'subidaEncosta'">Subida de Encosta</option>
+            <option th:value="'subidaEncostaTentativas'">Subida de Encosta com tentativas</option>
+            <option th:value="'temperaSimulada'">Tempera Simulada</option>
+            <option th:value="'todos'">Todos</option>
+        </select>
+        <button id="executarBtn" style="margin-top: 1rem; background-color: var(--cor-primaria); color: var(--cor-texto); border:none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: background-color 0.3s ease, transform 0.2s ease;" type="submit" onclick="enviarMetodo()">Executar</button>
+
+    </form>
 </div>
 
 <h2>Resultados</h2>
@@ -38,6 +42,7 @@
     <p th:if="${peso != null}">Pesos<span th:text="${peso}">valor do peso </span></p>
     <p th:if="${lucro != null}">Lucros <span th:text="${lucro}">valor do lucro </span></p>
     <p th:if="${solucaoInicial != null}">Resultado Avaliado <span th:text="${solucaoInicial}"> valor da solução inicial </span></p>
+    <p th:if="${subidas != null}">Resultado subida de encosta <span th:text="${subidas}"> valor da subida de encosta </span></p>
 </div>
 
 <!-- Popup Subida de Encosta com Tentativas -->
@@ -89,12 +94,14 @@
     // Funções simuladas para cada método
     function executarSubidaEncosta() {
         alert('Executando Subida de Encosta');
-        // Aqui você pode adicionar a chamada real do método
+        
+        document.getElementById('formMetodo').submit();
+
     }
 
     function executarSubidaEncostaTentativas(maxTentativas) {
         alert('Executando Subida de Encosta com tentativas. Máximo: ' + maxTentativas);
-        // Aqui você pode adicionar a chamada real do método com maxTentativas
+        document.getElementById('formMetodo').submit();
     }
 
     function executarTemperaSimulada(tempIni, tempFim, fator) {
@@ -118,13 +125,14 @@
     }
 
     // Evento do botão executar
-    executarBtn.addEventListener('click', (e) => {
+    function enviarMetodo() {
         e.preventDefault();
 
         const metodo = metodoSelect.value;
 
         if (metodo === 'subidaEncosta') {
             executarSubidaEncosta();
+
         } else if (metodo === 'subidaEncostaTentativas') {
             abrirPopup(popupTentativas);
             inputTentativas.value = '';

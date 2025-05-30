@@ -26,4 +26,7 @@ public class Verificador {
 
     public void verificarResultadosAvaliados(){System.out.println("VERIFICADOR DIZ-> Resultados avaliados salvos [peso, lucro]: " + Arrays.toString(resultado.getAvaliado()));}
 
+    public void verificarSubidaEncosta(){System.out.println("VERIFICADOR DIZ-> subida de encosta: " + Arrays.toString(resultado.getSetSubidaEncosta()));}
+
+
 }

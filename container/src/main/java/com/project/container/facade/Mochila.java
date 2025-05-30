@@ -1,9 +1,11 @@
 package com.project.container.facade;
 
+import com.project.container.functions.subidaEncosta.ComTentativa;
 import com.project.container.functions.subidaEncosta.SemTentativa;
 import com.project.container.model.ObterResultado_Model;
 import com.project.container.utils.Avaliador;
 import com.project.container.utils.Gerador;
+import com.project.container.utils.Verificador;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -19,6 +21,8 @@ public class Mochila {
     private ObterResultado_Model resultado;
     private Avaliador avaliador;
     private SemTentativa subidaSemTentativa;
+    private ComTentativa subidaComTentativa;
+    private Verificador verificador;
 
      public Mochila(int capacidadeMochila, int pesoMax, int pesoMin, int numeroItens){
         this.capacidadeMochila = capacidadeMochila;
@@ -56,14 +60,15 @@ public class Mochila {
      }
 
      public int[] executarSubidaDeEncosta() {
-         this.gerador = new Gerador(capacidadeMochila, numeroItens, resultado);
-
-         resultado.setTamanhoVetor(numeroItens);//armazenar o tamanho do vetor
-         resultado.setPesoMaximo(pesoMax);
-         resultado.setPesoMinimo(pesoMin);
 
          int[] resultadoSubida = subidaSemTentativa.subidaEncosta();
-         resultado.setSetSubidaEncosta(resultadoSubida);
+
+         return resultadoSubida;
+     }
+
+     public int[] executarSubidaEncostaTentativa(){
+
+         int[] resultadoSubida = subidaComTentativa.subidaComTentativa();
 
          return resultadoSubida;
      }

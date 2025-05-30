@@ -11,13 +11,15 @@ public class ObterResultado_Model {
     private int[] solucaoInicial;
     private int[] avaliado;
     private int[] sucessores;
-    private int[] setSubidaEncosta;
+    private int[] SubidaEncosta;
+    private int[] subidaEncostaTentativa;
 
     private int tamanhoVetor;
     private int somaPeso;
     private int somaLucro;
     private int pesoMaximo;
     private int pesoMinimo;
+    private int maxTentativas;
 
     public ObterResultado_Model() {}//construtor
 
@@ -101,11 +103,23 @@ public class ObterResultado_Model {
         this.sucessores = sucessores;
     }
 
-    public int[] getSetSubidaEncosta() {
-        return setSubidaEncosta;
+    public int getMaxTentativas() {return maxTentativas;}
+
+    public void setMaxTentativas(int maxTentativas) {this.maxTentativas = maxTentativas;}
+
+    public int[] getSubidaEncostaTentativa() {
+        return subidaEncostaTentativa;
     }
 
-    public void setSetSubidaEncosta(int[] setSubidaEncosta) {
-        this.setSubidaEncosta = setSubidaEncosta;
+    public void setSubidaEncostaTentativa(int[] subidaEncostaTentativa) {
+        this.subidaEncostaTentativa = subidaEncostaTentativa;
+    }
+
+    public int[] getSubidaEncosta() {
+        return SubidaEncosta;
+    }
+
+    public void setSubidaEncosta(int[] subidaEncosta) {
+        SubidaEncosta = subidaEncosta;
     }
 }
