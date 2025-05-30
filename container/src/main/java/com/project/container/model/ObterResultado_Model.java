@@ -3,17 +3,21 @@ package com.project.container.model;
 import org.springframework.stereotype.Component;
 
 //modelo para adquirir os dados
-@Component
+
 public class ObterResultado_Model {
     //dos geradores de peso e valor
     private int[]   pesos;
     private int[] valores;
     private int[] solucaoInicial;
     private int[] avaliado;
+    private int[] sucessores;
+    private int[] setSubidaEncosta;
 
     private int tamanhoVetor;
     private int somaPeso;
     private int somaLucro;
+    private int pesoMaximo;
+    private int pesoMinimo;
 
     public ObterResultado_Model() {}//construtor
 
@@ -71,5 +75,37 @@ public class ObterResultado_Model {
 
     public void setSomaLucro(int somaLucro) {
         this.somaLucro = somaLucro;
+    }
+
+    public int getPesoMaximo() {
+        return pesoMaximo;
+    }
+
+    public void setPesoMaximo(int pesoMaximo) {
+        this.pesoMaximo = pesoMaximo;
+    }
+
+    public int getPesoMinimo() {
+        return pesoMinimo;
+    }
+
+    public void setPesoMinimo(int pesoMinimo) {
+        this.pesoMinimo = pesoMinimo;
+    }
+
+    public int[] getSucessores() {
+        return sucessores;
+    }
+
+    public void setSucessores(int[] sucessores) {
+        this.sucessores = sucessores;
+    }
+
+    public int[] getSetSubidaEncosta() {
+        return setSubidaEncosta;
+    }
+
+    public void setSetSubidaEncosta(int[] setSubidaEncosta) {
+        this.setSubidaEncosta = setSubidaEncosta;
     }
 }

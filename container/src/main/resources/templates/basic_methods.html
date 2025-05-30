@@ -35,9 +35,9 @@
 
 <h2>Resultados</h2>
 <div id="resultados">
-    <p th:if="${peso != null}" th:text="${peso}">Pesos</p>
-    <p th:if="${lucro != null}" th:text="${lucro}">Lucros</p>
-    <!--<p th:if="${resultadoAvaliado != null}" th:text="${resultadoAvaliado}">Resultado Avaliado</p>-->
+    <p th:if="${peso != null}">Pesos<span th:text="${peso}">valor do peso </span></p>
+    <p th:if="${lucro != null}">Lucros <span th:text="${lucro}">valor do lucro </span></p>
+    <p th:if="${solucaoInicial != null}">Resultado Avaliado <span th:text="${solucaoInicial}"> valor da solução inicial </span></p>
 </div>
 
 <!-- Popup Subida de Encosta com Tentativas -->
