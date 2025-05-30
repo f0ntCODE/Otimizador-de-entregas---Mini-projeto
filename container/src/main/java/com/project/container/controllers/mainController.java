@@ -1,15 +1,18 @@
 package com.project.container.controllers;
 
+import com.project.container.model.ObterResultado_Model;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.project.container.functions.Mochila;
+import com.project.container.facade.Mochila;
 
 @Controller
 public class mainController {
+    private Mochila mochila;
+    private ObterResultado_Model resultadoModel;
 
     //************************************Redirecionamento de páginas
 
@@ -42,13 +45,15 @@ public class mainController {
                             Model model) {
 
     // Obter os resultados da classe Mochila
-        String[] resultados = Mochila.obterResultados(capacidadeMochila, 550, 50, numeroItens);
+        final int pesoMax = 550;    //final = valores constantes
+        final int pesoMin = 50;
 
-    // Adicionar os resultados ao modelo
-        model.addAttribute("resultadoPesos", resultados[0]);
-        model.addAttribute("resultadoLucros", resultados[1]);
-        model.addAttribute("resultadoAvaliado", resultados[2]);
+        new Mochila(capacidadeMochila, pesoMax, pesoMin, numeroItens);
 
+        mochila.executarMetodoBasico();
+
+        model.addAttribute("lucro", resultadoModel.getSomaLucro());
+        model.addAttribute("peso", resultadoModel.getSomaPeso());
     // Retornar a mesma página do formulário
         return "basic_methods";
 }
