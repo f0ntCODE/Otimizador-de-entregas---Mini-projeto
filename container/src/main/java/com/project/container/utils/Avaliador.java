@@ -30,13 +30,9 @@ public class Avaliador {
 
         for(int cont = 0; cont < tamanhoVetor; cont ++){
 
-            System.out.println("ITERAÇÃO " + cont);
-
             valorPesoAtual  += solucaoInicial[cont] * vetorPeso[cont];
             valorLucroAtual += solucaoInicial[cont] * vetorLucro[cont];
         }
-
-        System.out.println("Peso máximo: " + valorPesoAtual + "\n Lucro máximo: " + valorLucroAtual);
 
         resultados.setSomaLucro(valorLucroAtual);
         System.out.println("DA CLASSE AVALIADOR:" + resultados.getSomaLucro());
@@ -46,6 +42,37 @@ public class Avaliador {
         int[] conjunto = new int[]{valorLucroAtual, valorPesoAtual};
 
         resultados.setAvaliado(conjunto); //armazenar
+
+        return conjunto;
+    }
+
+    public int[] avaliarSucessor(int[] sucessor){
+        //variáveis
+        int[] vetorPeso = resultados.getPesos();
+        int[] vetorLucro = resultados.getValores();
+
+        int tamanhoVetor = resultados.getTamanhoVetor();
+
+
+        int valorPesoAtual  = 0;
+        int valorLucroAtual = 0;
+
+        for(int cont = 0; cont < tamanhoVetor; cont ++){
+
+            valorPesoAtual  += sucessor[cont] * vetorPeso[cont];
+            valorLucroAtual += sucessor[cont] * vetorLucro[cont];
+        }
+
+        System.out.println("Peso máximo: " + valorPesoAtual + "\n Lucro máximo: " + valorLucroAtual);
+
+        //resultados.setSomaLucro(valorLucroAtual);
+        System.out.println("DA CLASSE AVALIADOR DO SUCESSOR: R$ " + valorLucroAtual + "\nPESO: KG " + valorPesoAtual);
+
+        //resultados.setSomaPeso(valorPesoAtual);
+
+        int[] conjunto = new int[]{valorLucroAtual, valorPesoAtual};
+
+        //resultados.setAvaliado(conjunto); //armazenar
 
         return conjunto;
     }

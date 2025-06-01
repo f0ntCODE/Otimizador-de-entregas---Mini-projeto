@@ -78,6 +78,7 @@ public class Mochila {
 
          int[] resultadoSubida = subidaComTentativa.subidaComTentativa();
 
+         resultado.setSubidaEncosta(resultadoSubida);
          return resultadoSubida;
      }
 
@@ -88,6 +89,8 @@ public class Mochila {
          resultado.setFatorRedutor(fatorRedutor);
 
          int[] resultadoTempera = tempera.iniciarTempera();
+
+         resultado.setTemperaSimulada(resultadoTempera);
 
          return resultadoTempera;
      }

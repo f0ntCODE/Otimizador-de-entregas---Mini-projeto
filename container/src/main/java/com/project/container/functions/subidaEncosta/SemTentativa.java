@@ -21,17 +21,22 @@ public class SemTentativa {
     }
 
     public int[] subidaEncosta(){
+        System.out.println("\n\t DADOS DA SUBIDA DE ENCOSTA");
+
         int[] atual    = resultados.getSolucaoInicial();
         int valorAtual = resultados.getSomaLucro();
 
         while(true){
             int[] novoVetor = gerador.gerarSucessores();
-            int[]avaliados   = avaliador.avaliar();
-            int valorNovo = avaliados[0]; //pegar o lucro
+            int[] avaliados   = avaliador.avaliarSucessor(novoVetor);
+
+            int valorNovo = avaliados[0];
 
             if(valorNovo <= valorAtual){
 
                 resultados.setSubidaEncosta(atual);
+                resultados.setSomaValorSubidaEncosta(valorAtual);
+                resultados.setSomaPesoSubidaEncosta(calcularPeso(resultados.getPesos(), atual));
 
                 return atual;
             }
@@ -40,6 +45,19 @@ public class SemTentativa {
                 valorAtual = valorNovo;
             }
         }
+    }
+
+    private static int calcularPeso(int[] pesos, int[] solucao){
+        int soma = 0;
+
+        for(int i = 0; i < pesos.length; i ++){
+            if(solucao[i] == 1) {
+
+                soma += pesos[i];
+            }
+        }
+
+        return soma;
     }
 
 }

@@ -31,7 +31,7 @@ public class Gerador {
         int[] peso = new int[numeroItens];
 
         for (int cont = 0; cont < numeroItens; cont ++) {
-            peso[cont] = (int) (Math.random() * (550 - 50 + 1)) + 50;
+            peso[cont] = (int) (Math.random() * (500 - 25 + 1)) + 25;
 
         }
 
@@ -47,7 +47,7 @@ public class Gerador {
         int[] lucro = new int[numeroItens];
 
         for (int cont = 0; cont < numeroItens; cont ++) {
-            lucro[cont] = (int) (Math.random() * (550 - 50 + 1)) + 50;
+            lucro[cont] = (int) (Math.random() * (500 - 25 + 1)) + 25;
         }
 
         resultado.setValores(lucro); //salvar o lucro
@@ -141,39 +141,45 @@ public class Gerador {
     }catch(ArrayIndexOutOfBoundsException ex){
         System.err.println("ERRO: Problema na classe Sucessores: " + ex);
     }
-        resultado.setSucessores(melhorVetor);
+        resultado.setMelhorSucessorSubida(melhorVetor);
         return melhorVetor;
 
     }
 
-    public int[] gerarUmSucessor(){
-
-        int[] candidato = Arrays.copyOf(resultado.getSolucaoInicial(), resultado.getTamanhoVetor());
+    public int[] gerarUmSucessor(int[] solucaoAtual, int pesoMax) {
+        int[] candidato = Arrays.copyOf(solucaoAtual, solucaoAtual.length);
         int[] pesos = resultado.getPesos();
-        int[] solucaoInicial = resultado.getSolucaoInicial();
 
-        int posicao = (int)(Math.random() * (resultado.getTamanhoVetor() - 1)); //gerar números aleatórios
-        int pAtual = resultado.getSomaPeso();
-        int pesoMax = resultado.getPesoMaximo();
+        int posicao = (int)(Math.random() * solucaoAtual.length);
 
+        // Calcula peso atual da solução
+        int pesoAtual = calcularPeso(pesos, solucaoAtual);
+
+        // Inverte o bit na posição escolhida
         candidato[posicao] = 1 - candidato[posicao];
 
-        if(candidato[posicao] == 1) {   //entre aqui se o ítem estiver colocado na mochila
-            pAtual += pesos[posicao];  //somar o peso
-            System.out.println("peso atual: " + pAtual);
-
-            boolean ultrapassou = (pAtual > pesoMax) ? true : false;
-
-            if (!ultrapassou) {//o peso não foi ultrapassado
-                System.out.println("PESO NÃO ULTRAPASSADO");
-                return candidato;       //retorne o candidato e interrompa o fluxo
+        // Atualiza peso conforme inclusão ou remoção
+        if (candidato[posicao] == 1) {
+            pesoAtual += pesos[posicao];
+            if (pesoAtual <= pesoMax) {
+                return candidato;
+            } else {
+                return solucaoAtual; // rejeita candidato que ultrapassa peso
             }
-            else{
-                System.out.println("PESO ULTRAPASSADO");
-                return solucaoInicial;
+        } else {
+            pesoAtual -= pesos[posicao];
+            return candidato; // remoção sempre válida
+        }
+    }
+
+    private int calcularPeso(int[] pesos, int[] solucao) {
+        int peso = 0;
+        for (int i = 0; i < solucao.length; i++) {
+            if (solucao[i] == 1) {
+                peso += pesos[i];
             }
         }
-
-        return candidato;
+        return peso;
     }
+
 }

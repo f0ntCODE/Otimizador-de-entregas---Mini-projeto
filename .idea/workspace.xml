@@ -5,16 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7193e6e-3804-4530-90ff-0053d6d4363b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/tempera/TemperaSimulada.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/controllers/mainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/controllers/mainController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/facade/Mochila.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/facade/Mochila.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/subidaEncosta/ComTentativa.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/subidaEncosta/ComTentativa.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/subidaEncosta/SemTentativa.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/subidaEncosta/SemTentativa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/tempera/TemperaSimulada.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/tempera/TemperaSimulada.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/model/ObterResultado_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/model/ObterResultado_Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Avaliador.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Avaliador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Gerador.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Gerador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Verificador.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Verificador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/resources/templates/basic_methods.html" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/resources/templates/basic_methods.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

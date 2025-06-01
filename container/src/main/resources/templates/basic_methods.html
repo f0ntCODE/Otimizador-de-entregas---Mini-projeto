@@ -39,8 +39,8 @@
 
 <h2>Resultados</h2>
 <div id="resultados">
-    <p th:if="${peso != null}">Pesos -><span th:text="${peso}">valor do peso </span></p>
-    <p th:if="${lucro != null}">Lucros -><span th:text="${lucro}">valor do lucro </span></p>
+    <p th:if="${peso != null}">Pesos KG <span th:text="${peso}">valor do peso </span></p>
+    <p th:if="${lucro != null}">Lucros R$ <span th:text="${lucro}">valor do lucro </span></p>
     <p th:if="${solucaoInicial != null}">Resultado Avaliado -><span th:text="${solucaoInicial}"> valor da solução inicial </span></p>
     <p th:if="${subidas != null}">Resultado subida de encosta -><span th:text="${subidas}"> valor da subida de encosta </span></p>
     <p th:if="${tempera != null}">Resultado tempera -><span th:text="${tempera}"> valor da tempera </span></p>
@@ -115,7 +115,7 @@
 
     function executarTodos() {
         alert('Executando todos os métodos');
-        
+
         // Aqui você pode adicionar a chamada real para executar todos os métodos
     }
 

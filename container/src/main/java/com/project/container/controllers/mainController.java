@@ -49,12 +49,14 @@ public class mainController {
                             Model model) {
 
     // Obter os resultados da classe Mochila
-        final int pesoMax = 550;    //final = valores constantes
-        final int pesoMin = 50;
+        final int pesoMax = 500;    //final = valores constantes
+        final int pesoMin = 20;
 
         mochila = new Mochila(capacidadeMochila, pesoMax, pesoMin, numeroItens); //inicializar valores
 
         int[] dados = mochila.executarMetodoBasico();
+        System.out.println("\n\t DADOS DO MÉTODO BÁSICO");
+
         ObterResultado_Model resultadoModel = mochila.getSolucaoInicial();
 
         //para fins de debug
@@ -74,10 +76,11 @@ public class mainController {
                                 Model model,
                                   @RequestParam (value = "tentativas", required = false) Integer tentativas,
                                   @RequestParam(value = "tempInicial", required = false) Integer tempInicial,
-                                  @RequestParam(value = "tempFinal", required = false) Integer tempFinal,
+                                  @RequestParam(value = "tempFinal", required = false) Double tempFinal,
                                   @RequestParam(value = "fatorRedutor", required = false) Double fatorRedutor){
         model.addAttribute("metodoSelecionado", opcao);
         System.out.println("CONTROLADOR DIZ: Opção selecionada -> " + opcao);
+        ObterResultado_Model resultadoModel = mochila.getSolucaoInicial();
 
         int[] resultado;
 
@@ -85,6 +88,8 @@ public class mainController {
 
             resultado = subidaEncosta();
             model.addAttribute("subidas", Arrays.toString(resultado));
+            model.addAttribute("lucro", resultadoModel.getSomaValorSubidaEncosta());
+            model.addAttribute("peso", resultadoModel.getSomaPesoSubidaEncosta());
 
         }
         else if (opcao.equals("subidaEncostaTentativas")) {
@@ -92,20 +97,25 @@ public class mainController {
 
                 resultado = subidaEncostaComTentativa(tentativas);
                 model.addAttribute("subidas", Arrays.toString(resultado));
+            model.addAttribute("lucro", resultadoModel.getSomaValorSubidaEncosta());
+            model.addAttribute("peso", resultadoModel.getSomaPesoSubidaEncosta());
+
         }
         else if (opcao.equals("temperaSimulada")) {
             if (tempInicial == null) {tempInicial = 10000;}
-            if (tempFinal == null) {tempFinal = 150;}
+            if (tempFinal == null) {tempFinal = 0.9;}
             if (fatorRedutor == null) {fatorRedutor = 0.8;}
 
             resultado = temperaSimulada(tempInicial, tempFinal, fatorRedutor);
-            model.addAttribute("tempera", resultado);
+            model.addAttribute("tempera", Arrays.toString(resultado));
+            model.addAttribute("lucro", resultadoModel.getSomaValorTempera());
+            model.addAttribute("peso", resultadoModel.getSomaPesoTemperaSimulada());
 
         }
         else if (opcao == "todos") {
 
-            resultado = executarTodos();
-            model.addAttribute("ganhos", resultado);
+            //resultado = executarTodos();
+            //model.addAttribute("ganhos", resultado);
         }
         return "basic_methods";
     }
@@ -128,7 +138,7 @@ public class mainController {
         return resultadoSubida;
     }
 
-    public int[] temperaSimulada(int tempInicial, int tempFinal,double fatorRedutor){
+    public int[] temperaSimulada(int tempInicial, double tempFinal,double fatorRedutor){
 
         System.out.println("executando Tempera simulada");
 
@@ -137,8 +147,10 @@ public class mainController {
         return resultadoTempera;
     }
 
-    public int[] executarTodos(){
+    /*public int[] executarTodos(){
 
+    System.out.println("Executando todos");
+    int valorGanho = ;
 
-    }
+    }*/
 }

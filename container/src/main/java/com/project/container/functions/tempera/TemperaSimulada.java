@@ -42,22 +42,36 @@ public class TemperaSimulada {
         verificador.verificarFatorRedutor();
 
         while(temp > tempFinal) {
-            int[] sucessorNovo = gerador.gerarUmSucessor();
+            int[] sucessorNovo = gerador.gerarUmSucessor(atual, resultados.getPesoMaximo());
             int valorNovo = calcularValor(lucros, sucessorNovo);
 
-            double delta = valorNovo - valorAtual;
+            System.out.println("Valor " + valorNovo);
 
+            double delta = (double)valorNovo - (double)valorAtual;
+
+            System.out.println("delta " + delta);
             if (delta > 0) {
-                atual = sucessorNovo;
+                System.out.println("ACHOU MELHOR");
+                atual = Arrays.copyOf(sucessorNovo, resultados.getTamanhoVetor());
                 valorAtual = valorNovo;
 
+                resultados.setSomaValorTempera(valorAtual);
+                resultados.setTemperaSimulada(atual);
+                resultados.setSomaPesoTemperaSimulada(calcularPeso(resultados.getPesos(), atual));
+
             } else {
+                System.out.println("ENTROU NA TÊMPERA");
                 double aux = Math.exp(delta / temp);
                 double aleatorio = Math.random();
 
                 if (aleatorio < aux) {
-                    atual = sucessorNovo;
+                    System.out.println("ALEATÓRIO E AUX");
+                    atual = Arrays.copyOf(sucessorNovo, resultados.getTamanhoVetor());
                     valorAtual = valorNovo;
+
+                    resultados.setSomaValorTempera(valorAtual);
+                    resultados.setTemperaSimulada(atual);
+                    resultados.setSomaPesoTemperaSimulada(calcularPeso(resultados.getPesos(), atual));
                 }
             }
             temp *= fatorRedutor;
@@ -66,10 +80,12 @@ public class TemperaSimulada {
 
             verificador.verificarTemperaSimulada();
             System.out.println("Temperatura atual = " + temp);
-        }
-
             System.out.println("Valor atual = " + valorAtual);
             System.out.println("Valor peso = "+ calcularPeso(resultados.getPesos(), atual));
+
+        }
+
+
 
         return atual;//vai retornar a melhor combinação
     }

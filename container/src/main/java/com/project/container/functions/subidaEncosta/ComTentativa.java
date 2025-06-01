@@ -20,6 +20,8 @@ public class ComTentativa {
     }
 
     public int[] subidaComTentativa(){
+        System.out.println("\n\t DADOS DA SUBIDA DE ENCOSTA COM TENTATIVA");
+
         final int limiteTentativa = resultados.getMaxTentativas();
         int[] atual        = resultados.getSolucaoInicial();
         int valorAtual     = resultados.getSomaLucro();
@@ -28,18 +30,24 @@ public class ComTentativa {
         while(true){
 
             int[] novoVetor = gerador.gerarSucessores();
-            int[] avalia   = avaliador.avaliar();
+            int[] avaliados   = avaliador.avaliarSucessor(novoVetor);
 
-            int valorNovo = avalia[0];
+            int valorNovo = avaliados[0];
 
             if(valorNovo <= valorAtual){
-                if(tentativaAtual > limiteTentativa) {
 
+                if(tentativaAtual > limiteTentativa) {
+                    resultados.setSubidaEncostaTentativa(atual);
+
+                    resultados.setSubidaEncosta(atual);
+                    resultados.setSomaValorSubidaEncosta(valorAtual);
+                    resultados.setSomaPesoSubidaEncosta(calcularPeso(resultados.getPesos(), atual));
 
                     return atual;
                 }
                 else{
                     tentativaAtual ++;
+                    System.out.println("TENTATIVA: " + tentativaAtual);
                 }
             }
             else{
@@ -48,6 +56,19 @@ public class ComTentativa {
                 tentativaAtual = 0;
             }
         }
+    }
+
+    private static int calcularPeso(int[] pesos, int[] solucao){
+        int soma = 0;
+
+        for(int i = 0; i < pesos.length; i ++){
+            if(solucao[i] == 1) {
+
+                soma += pesos[i];
+            }
+        }
+
+        return soma;
     }
 }
 

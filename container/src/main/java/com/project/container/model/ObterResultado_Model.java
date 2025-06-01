@@ -11,9 +11,11 @@ public class ObterResultado_Model {
     private int[] solucaoInicial;
     private int[] avaliado;
     private int[] sucessores;
+    private int[] melhorSucessorSubida;
     private int[] SubidaEncosta;
     private int[] subidaEncostaTentativa;
     private int[] temperaSimulada;
+    private int[] melhorSucessorUnico;
 
     private int tamanhoVetor;
     private int somaPeso;
@@ -22,6 +24,11 @@ public class ObterResultado_Model {
     private int pesoMinimo;
     private int maxTentativas;
     private int temperaturaInicial;
+    private int pesoSubidaEncosta;
+    private int somaValorSubidaEncosta;
+    private int somaPesoSubidaEncosta;
+    private int somaValorTempera;
+    private int somaPesoTemperaSimulada;
 
     private double temperaturaFinal;
     private double fatorRedutor;
@@ -140,4 +147,48 @@ public class ObterResultado_Model {
     public double getGanho() {return ganho;}
 
     public void setGanho(double ganho) {this.ganho = ganho;}
+
+    public int getPesoSubidaEncosta() {return pesoSubidaEncosta;}
+
+    public void setPesoSubidaEncosta(int pesoSubidaEncosta) {this.pesoSubidaEncosta = pesoSubidaEncosta;}
+
+    public int[] getMelhorSucessorSubida() {return melhorSucessorSubida;}
+
+    public void setMelhorSucessorSubida(int[] melhorSucessorSubida) {this.melhorSucessorSubida = melhorSucessorSubida;}
+
+    public int[] getMelhorSucessorUnico() {return melhorSucessorUnico;}
+
+    public void setMelhorSucessorUnico(int[] melhorSucessorUnico) {this.melhorSucessorUnico = melhorSucessorUnico;}
+
+    public int getSomaValorSubidaEncosta() {
+        return somaValorSubidaEncosta;
+    }
+
+    public void setSomaValorSubidaEncosta(int somaValorSubidaEncosta) {
+        this.somaValorSubidaEncosta = somaValorSubidaEncosta;
+    }
+
+    public int getSomaPesoSubidaEncosta() {
+        return somaPesoSubidaEncosta;
+    }
+
+    public void setSomaPesoSubidaEncosta(int somaPesoSubidaEncosta) {
+        this.somaPesoSubidaEncosta = somaPesoSubidaEncosta;
+    }
+
+    public int getSomaValorTempera() {
+        return somaValorTempera;
+    }
+
+    public void setSomaValorTempera(int somaValorTempera) {
+        this.somaValorTempera = somaValorTempera;
+    }
+
+    public int getSomaPesoTemperaSimulada() {
+        return somaPesoTemperaSimulada;
+    }
+
+    public void setSomaPesoTemperaSimulada(int somaPesoTemperaSimulada) {
+        this.somaPesoTemperaSimulada = somaPesoTemperaSimulada;
+    }
 }
