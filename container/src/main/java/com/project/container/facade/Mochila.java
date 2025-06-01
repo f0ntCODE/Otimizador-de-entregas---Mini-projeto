@@ -2,6 +2,7 @@ package com.project.container.facade;
 
 import com.project.container.functions.subidaEncosta.ComTentativa;
 import com.project.container.functions.subidaEncosta.SemTentativa;
+import com.project.container.functions.tempera.TemperaSimulada;
 import com.project.container.model.ObterResultado_Model;
 import com.project.container.utils.Avaliador;
 import com.project.container.utils.Gerador;
@@ -23,6 +24,7 @@ public class Mochila {
     private SemTentativa subidaSemTentativa;
     private ComTentativa subidaComTentativa;
     private Verificador verificador;
+    private TemperaSimulada tempera;
 
      public Mochila(int capacidadeMochila, int pesoMax, int pesoMin, int numeroItens){
         this.capacidadeMochila = capacidadeMochila;
@@ -31,7 +33,10 @@ public class Mochila {
         this.numeroItens = numeroItens;
 
         this.resultado = new ObterResultado_Model();
+        this.verificador = new Verificador(resultado);
         this.subidaSemTentativa = new SemTentativa(resultado);
+        this.subidaComTentativa = new ComTentativa(resultado);
+        this.tempera = new TemperaSimulada(resultado);
      }
 
 
@@ -66,11 +71,25 @@ public class Mochila {
          return resultadoSubida;
      }
 
-     public int[] executarSubidaEncostaTentativa(){
+     public int[] executarSubidaEncostaTentativa(int tentativas){
+
+         resultado.setMaxTentativas(tentativas);
+         verificador.verificarMaximoTentativas();
 
          int[] resultadoSubida = subidaComTentativa.subidaComTentativa();
 
          return resultadoSubida;
+     }
+
+     public int[] executarTemperaSimulada(int tInicial, double tFinal, double fatorRedutor){
+         //armazenar os valores
+         resultado.setTemperaturaInicial(tInicial);
+         resultado.setTemperaturaFinal(tFinal);
+         resultado.setFatorRedutor(fatorRedutor);
+
+         int[] resultadoTempera = tempera.iniciarTempera();
+
+         return resultadoTempera;
      }
     
 }

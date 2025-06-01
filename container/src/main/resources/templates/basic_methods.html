@@ -39,10 +39,12 @@
 
 <h2>Resultados</h2>
 <div id="resultados">
-    <p th:if="${peso != null}">Pesos<span th:text="${peso}">valor do peso </span></p>
-    <p th:if="${lucro != null}">Lucros <span th:text="${lucro}">valor do lucro </span></p>
-    <p th:if="${solucaoInicial != null}">Resultado Avaliado <span th:text="${solucaoInicial}"> valor da solução inicial </span></p>
-    <p th:if="${subidas != null}">Resultado subida de encosta <span th:text="${subidas}"> valor da subida de encosta </span></p>
+    <p th:if="${peso != null}">Pesos -><span th:text="${peso}">valor do peso </span></p>
+    <p th:if="${lucro != null}">Lucros -><span th:text="${lucro}">valor do lucro </span></p>
+    <p th:if="${solucaoInicial != null}">Resultado Avaliado -><span th:text="${solucaoInicial}"> valor da solução inicial </span></p>
+    <p th:if="${subidas != null}">Resultado subida de encosta -><span th:text="${subidas}"> valor da subida de encosta </span></p>
+    <p th:if="${tempera != null}">Resultado tempera -><span th:text="${tempera}"> valor da tempera </span></p>
+    <p th:if="${todos != null}">Ganhos -><span th:text="${ganhos}"> valor dos ganhos </span></p>
 </div>
 
 <!-- Popup Subida de Encosta com Tentativas -->
@@ -101,16 +103,19 @@
 
     function executarSubidaEncostaTentativas(maxTentativas) {
         alert('Executando Subida de Encosta com tentativas. Máximo: ' + maxTentativas);
+        window.location.href = "/metodo?opcaoSelecionada="+encodeURIComponent('formMetodo') + "&tentativas=" + encodeURIComponent(maxTentativas);
         document.getElementById('formMetodo').submit();
     }
 
     function executarTemperaSimulada(tempIni, tempFim, fator) {
         alert(`Executando Tempera Simulada com:\nTemperatura Inicial: ${tempIni}\nTemperatura Final: ${tempFim}\nFator Redutor: ${fator}`);
-        // Aqui você pode adicionar a chamada real do método com os parâmetros
+        window.location.href = "/metodo?opcaoSelecionada=" + encodeURIComponent('formMetodo') + "&tempInicial=" + encodeURIComponent(tempIni)+"&tempFinal=" + encodeURIComponent(tempFim) + "&fatorRedutor=" + encodeURIComponent(fator);
+        document.getElementById('formMetodo').submit();
     }
 
     function executarTodos() {
         alert('Executando todos os métodos');
+        
         // Aqui você pode adicionar a chamada real para executar todos os métodos
     }
 
@@ -137,12 +142,14 @@
             abrirPopup(popupTentativas);
             inputTentativas.value = '';
             inputTentativas.focus();
+
         } else if (metodo === 'temperaSimulada') {
             abrirPopup(popupTempera);
             tempInicial.value = '';
             tempFinal.value = '';
             fatorRedutor.value = '';
             tempInicial.focus();
+
         } else if (metodo === 'todos') {
             executarTodos();
         }

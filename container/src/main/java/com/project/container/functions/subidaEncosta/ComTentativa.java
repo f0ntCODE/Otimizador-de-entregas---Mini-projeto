@@ -21,13 +21,9 @@ public class ComTentativa {
 
     public int[] subidaComTentativa(){
         final int limiteTentativa = resultados.getMaxTentativas();
-
         int[] atual        = resultados.getSolucaoInicial();
         int valorAtual     = resultados.getSomaLucro();
         int tentativaAtual = 0;
-
-        int[] valores = gerador.gerarLucro();//valores adaptados para a situação
-        int[] pesos   = gerador.gerarPeso();
 
         while(true){
 

@@ -24,9 +24,6 @@ public class SemTentativa {
         int[] atual    = resultados.getSolucaoInicial();
         int valorAtual = resultados.getSomaLucro();
 
-        int[] valores = resultados.getValores();//valores adaptados para a situação
-        int[] pesos   = resultados.getPesos();
-
         while(true){
             int[] novoVetor = gerador.gerarSucessores();
             int[]avaliados   = avaliador.avaliar();

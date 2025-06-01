@@ -13,6 +13,7 @@ public class ObterResultado_Model {
     private int[] sucessores;
     private int[] SubidaEncosta;
     private int[] subidaEncostaTentativa;
+    private int[] temperaSimulada;
 
     private int tamanhoVetor;
     private int somaPeso;
@@ -20,6 +21,11 @@ public class ObterResultado_Model {
     private int pesoMaximo;
     private int pesoMinimo;
     private int maxTentativas;
+    private int temperaturaInicial;
+
+    private double temperaturaFinal;
+    private double fatorRedutor;
+    private double ganho;
 
     public ObterResultado_Model() {}//construtor
 
@@ -107,19 +113,31 @@ public class ObterResultado_Model {
 
     public void setMaxTentativas(int maxTentativas) {this.maxTentativas = maxTentativas;}
 
-    public int[] getSubidaEncostaTentativa() {
-        return subidaEncostaTentativa;
-    }
+    public int[] getSubidaEncostaTentativa() {return subidaEncostaTentativa;}
 
-    public void setSubidaEncostaTentativa(int[] subidaEncostaTentativa) {
-        this.subidaEncostaTentativa = subidaEncostaTentativa;
-    }
+    public void setSubidaEncostaTentativa(int[] subidaEncostaTentativa) {this.subidaEncostaTentativa = subidaEncostaTentativa;}
 
-    public int[] getSubidaEncosta() {
-        return SubidaEncosta;
-    }
+    public int[] getSubidaEncosta() {return SubidaEncosta;}
 
-    public void setSubidaEncosta(int[] subidaEncosta) {
-        SubidaEncosta = subidaEncosta;
-    }
+    public void setSubidaEncosta(int[] subidaEncosta) {SubidaEncosta = subidaEncosta;}
+
+    public int[] getTemperaSimulada() {return temperaSimulada;}
+
+    public void setTemperaSimulada(int[] temperaSimulada) {this.temperaSimulada = temperaSimulada;}
+
+    public int getTemperaturaInicial() {return temperaturaInicial;}
+
+    public void setTemperaturaInicial(int temperaturaInicial) {this.temperaturaInicial = temperaturaInicial;}
+
+    public double getTemperaturaFinal() {return temperaturaFinal;}
+
+    public void setTemperaturaFinal(double temperaturaFinal) {this.temperaturaFinal = temperaturaFinal;}
+
+    public double getFatorRedutor() {return fatorRedutor;}
+
+    public void setFatorRedutor(double fatorRedutor) {this.fatorRedutor = fatorRedutor;}
+
+    public double getGanho() {return ganho;}
+
+    public void setGanho(double ganho) {this.ganho = ganho;}
 }

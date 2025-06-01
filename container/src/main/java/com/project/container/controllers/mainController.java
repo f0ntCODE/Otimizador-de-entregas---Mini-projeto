@@ -71,7 +71,11 @@ public class mainController {
 
     @GetMapping("/metodo")
     public String metodoEscolhido(@RequestParam ("opcaoSelecionada") String opcao,
-                                Model model, @RequestParam ("tentativas") int tentativas){
+                                Model model,
+                                  @RequestParam (value = "tentativas", required = false) Integer tentativas,
+                                  @RequestParam(value = "tempInicial", required = false) Integer tempInicial,
+                                  @RequestParam(value = "tempFinal", required = false) Integer tempFinal,
+                                  @RequestParam(value = "fatorRedutor", required = false) Double fatorRedutor){
         model.addAttribute("metodoSelecionado", opcao);
         System.out.println("CONTROLADOR DIZ: Opção selecionada -> " + opcao);
 
@@ -82,17 +86,26 @@ public class mainController {
             resultado = subidaEncosta();
             model.addAttribute("subidas", Arrays.toString(resultado));
 
-        } 
+        }
         else if (opcao.equals("subidaEncostaTentativas")) {
+            if(tentativas == null){tentativas = 5;}
 
-            resultado = subidaEncostaComTentativa();
-
-        } 
+                resultado = subidaEncostaComTentativa(tentativas);
+                model.addAttribute("subidas", Arrays.toString(resultado));
+        }
         else if (opcao.equals("temperaSimulada")) {
-            
+            if (tempInicial == null) {tempInicial = 10000;}
+            if (tempFinal == null) {tempFinal = 150;}
+            if (fatorRedutor == null) {fatorRedutor = 0.8;}
+
+            resultado = temperaSimulada(tempInicial, tempFinal, fatorRedutor);
+            model.addAttribute("tempera", resultado);
+
         }
         else if (opcao == "todos") {
-            
+
+            resultado = executarTodos();
+            model.addAttribute("ganhos", resultado);
         }
         return "basic_methods";
     }
@@ -106,12 +119,26 @@ public class mainController {
         return resultadoSubida;
     }
 
-    public int[] subidaEncostaComTentativa(){
+    public int[] subidaEncostaComTentativa(int tentativas){
 
         System.out.println("executando subida de encosta");
 
-        int[] resultadoSubida = mochila.executarSubidaDeEncosta();
+        int[] resultadoSubida = mochila.executarSubidaEncostaTentativa(tentativas);
 
         return resultadoSubida;
+    }
+
+    public int[] temperaSimulada(int tempInicial, int tempFinal,double fatorRedutor){
+
+        System.out.println("executando Tempera simulada");
+
+        int[] resultadoTempera = mochila.executarTemperaSimulada(tempInicial, tempFinal, fatorRedutor);
+
+        return resultadoTempera;
+    }
+
+    public int[] executarTodos(){
+
+
     }
 }

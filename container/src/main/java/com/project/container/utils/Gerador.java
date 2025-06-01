@@ -91,7 +91,6 @@ public class Gerador {
     }
 
     public int[] gerarSucessores(){
-
         //recursos
         int tamanhoVetor = resultado.getTamanhoVetor();
         int melhorValor = resultado.getSomaLucro();
@@ -103,7 +102,7 @@ public class Gerador {
         int[] solucaoAtual = resultado.getSolucaoInicial();
         int[] melhorVetor = Arrays.copyOf(solucaoAtual, tamanhoVetor);
 
-
+    try {
         for (int i = 0; i < tamanhoVetor; i++) {
             if (solucaoAtual[i] == 1) {
                 int[] candidato = Arrays.copyOf(solucaoAtual, tamanhoVetor);
@@ -139,10 +138,42 @@ public class Gerador {
                 }
             }
         }
-
+    }catch(ArrayIndexOutOfBoundsException ex){
+        System.err.println("ERRO: Problema na classe Sucessores: " + ex);
+    }
         resultado.setSucessores(melhorVetor);
         return melhorVetor;
 
     }
 
+    public int[] gerarUmSucessor(){
+
+        int[] candidato = Arrays.copyOf(resultado.getSolucaoInicial(), resultado.getTamanhoVetor());
+        int[] pesos = resultado.getPesos();
+        int[] solucaoInicial = resultado.getSolucaoInicial();
+
+        int posicao = (int)(Math.random() * (resultado.getTamanhoVetor() - 1)); //gerar números aleatórios
+        int pAtual = resultado.getSomaPeso();
+        int pesoMax = resultado.getPesoMaximo();
+
+        candidato[posicao] = 1 - candidato[posicao];
+
+        if(candidato[posicao] == 1) {   //entre aqui se o ítem estiver colocado na mochila
+            pAtual += pesos[posicao];  //somar o peso
+            System.out.println("peso atual: " + pAtual);
+
+            boolean ultrapassou = (pAtual > pesoMax) ? true : false;
+
+            if (!ultrapassou) {//o peso não foi ultrapassado
+                System.out.println("PESO NÃO ULTRAPASSADO");
+                return candidato;       //retorne o candidato e interrompa o fluxo
+            }
+            else{
+                System.out.println("PESO ULTRAPASSADO");
+                return solucaoInicial;
+            }
+        }
+
+        return candidato;
+    }
 }
