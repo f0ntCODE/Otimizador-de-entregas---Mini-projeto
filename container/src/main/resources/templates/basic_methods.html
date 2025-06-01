@@ -5,22 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link th:href="@{/basic_methods.css}" rel="stylesheet" />
     <title>Métodos Básicos</title>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> subDev
 </head>
 <body>
-    <h1>Métodos Básicos</h1>
-    <a th:href="@{/}">Voltar</a>
+<h1>Métodos Básicos</h1>
+<a th:href="@{/}">Voltar</a>
 
+<<<<<<< HEAD
     <form th:action="@{/gerar_problema}" method="post" id="form-gerar-problema">
         <label for="capacidadeMochila">Capacidade da Mochila:</label>
         <input type="number" id="capacidadeMochila" name="capacidadeMochila" required /><br /><br />
 
         <label for="numeroItens">Quantidade de Itens:</label>
         <input type="number" id="numeroItens" name="numeroItens" required /><br /><br />
+=======
+<form th:action="@{/gerar_problema}" method="post" id="form-gerar-problema">
+    <label for="capacidadeMochila">Capacidade da Mochila:</label>
+    <input type="number" id="capacidadeMochila" name="capacidadeMochila" required /><br /><br />
 
-        <button type="submit">Gerar Problema</button>
+    <label for="numeroItens">Quantidade de Itens:</label>
+    <input type="number" id="numeroItens" name="numeroItens" required /><br /><br />
+
+    <button type="submit">Gerar Problema</button>
+</form>
+
+<h2>Escolha o método</h2>
+<div style="max-width:700px; margin-bottom:2rem; text-align:left;">
+    <form action="/metodo" method="get" id="formMetodo">
+
+        <label for="metodoSelect" style="font-weight:600; color: var(--cor-texto); display:block; margin-bottom:0.5rem;">Método:</label>
+        <select id="metodoSelect" name="opcaoSelecionada" style="width: 100%; max-width: 300px; padding: 0.6rem; border-radius: 12px; border:none; background:#37474F; color: var(--cor-texto); font-size: 1rem;">
+            <option th:value="'subidaEncosta'">Subida de Encosta</option>
+            <option th:value="'subidaEncostaTentativas'">Subida de Encosta com tentativas</option>
+            <option th:value="'temperaSimulada'">Tempera Simulada</option>
+            <option th:value="'todos'">Todos</option>
+        </select>
+        <button id="executarBtn" style="margin-top: 1rem; background-color: var(--cor-primaria); color: var(--cor-texto); border:none; padding: 0.75rem 1.5rem; border-radius: 12px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 6px rgba(0,0,0,0.2); transition: background-color 0.3s ease, transform 0.2s ease;" type="submit" onclick="enviarMetodo()">Executar</button>
+>>>>>>> subDev
+
     </form>
+</div>
 
+<<<<<<< HEAD
     <h2>Escolha o método</h2>
     <div style="max-width:700px; margin-bottom:2rem; text-align:left;">
         <label for="metodoSelect" style="font-weight:600; color: var(--cor-texto); display:block; margin-bottom:0.5rem;">Método:</label>
@@ -69,6 +99,47 @@
             </div>
         </div>
     </div>
+=======
+<h2>Resultados</h2>
+<div id="resultados">
+    <p th:if="${peso != null}">Pesos KG <span th:text="${peso}">valor do peso </span></p>
+    <p th:if="${lucro != null}">Lucros R$ <span th:text="${lucro}">valor do lucro </span></p>
+    <p th:if="${solucaoInicial != null}">Resultado Avaliado -><span th:text="${solucaoInicial}"> valor da solução inicial </span></p>
+    <p th:if="${subidas != null}">Resultado subida de encosta -><span th:text="${subidas}"> valor da subida de encosta </span></p>
+    <p th:if="${tempera != null}">Resultado tempera -><span th:text="${tempera}"> valor da tempera </span></p>
+    <p th:if="${todos != null}">Ganhos -><span th:text="${ganhos}"> valor dos ganhos </span></p>
+</div>
+
+<!-- Popup Subida de Encosta com Tentativas -->
+<div id="popupTentativas" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloTentativas">
+    <div class="popup">
+        <h3 id="tituloTentativas">Número máximo de tentativas</h3>
+        <label for="inputTentativas">Informe o número máximo de tentativas:</label>
+        <input type="number" id="inputTentativas" min="1" required />
+        <div class="popup-buttons">
+            <button id="cancelarTentativas">Cancelar</button>
+            <button id="confirmarTentativas">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Tempera Simulada -->
+<div id="popupTempera" class="popup-overlay" role="dialog" aria-modal="true" aria-labelledby="tituloTempera">
+    <div class="popup">
+        <h3 id="tituloTempera">Parâmetros da Tempera Simulada</h3>
+        <label for="tempInicial">Temperatura Inicial:</label>
+        <input type="number" id="tempInicial" step="any" required />
+        <label for="tempFinal">Temperatura Final:</label>
+        <input type="number" id="tempFinal" step="any" required />
+        <label for="fatorRedutor">Fator Redutor:</label>
+        <input type="number" id="fatorRedutor" step="any" min="0" max="1" required />
+        <div class="popup-buttons">
+            <button id="cancelarTempera">Cancelar</button>
+            <button id="confirmarTempera">Confirmar</button>
+        </div>
+    </div>
+</div>
+>>>>>>> subDev
 
 <script>
     const metodoSelect = document.getElementById('metodoSelect');
@@ -89,21 +160,41 @@
     // Funções simuladas para cada método
     function executarSubidaEncosta() {
         alert('Executando Subida de Encosta');
+<<<<<<< HEAD
         // Aqui você pode adicionar a chamada real do método
+=======
+        
+        document.getElementById('formMetodo').submit();
+
+>>>>>>> subDev
     }
 
     function executarSubidaEncostaTentativas(maxTentativas) {
         alert('Executando Subida de Encosta com tentativas. Máximo: ' + maxTentativas);
+<<<<<<< HEAD
         // Aqui você pode adicionar a chamada real do método com maxTentativas
+=======
+        window.location.href = "/metodo?opcaoSelecionada="+encodeURIComponent('formMetodo') + "&tentativas=" + encodeURIComponent(maxTentativas);
+        document.getElementById('formMetodo').submit();
+>>>>>>> subDev
     }
 
     function executarTemperaSimulada(tempIni, tempFim, fator) {
         alert(`Executando Tempera Simulada com:\nTemperatura Inicial: ${tempIni}\nTemperatura Final: ${tempFim}\nFator Redutor: ${fator}`);
+<<<<<<< HEAD
         // Aqui você pode adicionar a chamada real do método com os parâmetros
+=======
+        window.location.href = "/metodo?opcaoSelecionada=" + encodeURIComponent('formMetodo') + "&tempInicial=" + encodeURIComponent(tempIni)+"&tempFinal=" + encodeURIComponent(tempFim) + "&fatorRedutor=" + encodeURIComponent(fator);
+        document.getElementById('formMetodo').submit();
+>>>>>>> subDev
     }
 
     function executarTodos() {
         alert('Executando todos os métodos');
+<<<<<<< HEAD
+=======
+
+>>>>>>> subDev
         // Aqui você pode adicionar a chamada real para executar todos os métodos
     }
 
@@ -118,23 +209,39 @@
     }
 
     // Evento do botão executar
+<<<<<<< HEAD
     executarBtn.addEventListener('click', (e) => {
+=======
+    function enviarMetodo() {
+>>>>>>> subDev
         e.preventDefault();
 
         const metodo = metodoSelect.value;
 
         if (metodo === 'subidaEncosta') {
             executarSubidaEncosta();
+<<<<<<< HEAD
+=======
+
+>>>>>>> subDev
         } else if (metodo === 'subidaEncostaTentativas') {
             abrirPopup(popupTentativas);
             inputTentativas.value = '';
             inputTentativas.focus();
+<<<<<<< HEAD
+=======
+
+>>>>>>> subDev
         } else if (metodo === 'temperaSimulada') {
             abrirPopup(popupTempera);
             tempInicial.value = '';
             tempFinal.value = '';
             fatorRedutor.value = '';
             tempInicial.focus();
+<<<<<<< HEAD
+=======
+
+>>>>>>> subDev
         } else if (metodo === 'todos') {
             executarTodos();
         }

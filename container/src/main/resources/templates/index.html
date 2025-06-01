@@ -7,6 +7,7 @@
     <link rel="stylesheet" th:href="@{/index.css}" />
 </head>
 <body>
+<<<<<<< HEAD
     <header>
         <h1>Sistema de Otimização Logística</h1>
         <h2>Problema da Mochila aplicado ao gerenciamento de carga</h2>
@@ -28,5 +29,33 @@
     </nav>
 
    
+=======
+<header>
+    <h1>Sistema de Otimização Logística</h1>
+    <h2>Problema da Mochila aplicado ao gerenciamento de carga</h2>
+</header>
+
+<nav class="menu" role="navigation" aria-label="Menu principal">
+    <a th:href="@{/metodos}" class="menu-link">
+        <span class="icone" aria-hidden="true">📦</span>
+        Métodos Básicos
+    </a>
+    <a href="#" class="menu-link" onclick="Acesso(event)">
+        <span class="icone" aria-hidden="true">🧬</span>
+        Algoritmos Genéticos
+    </a>
+    <a th:href="@{/info}" class="menu-link">
+        <span class="icone" aria-hidden="true">📖</span>
+        Descrição do Problema
+    </a>
+</nav>
+
+<script>
+    function Acesso(event) {
+        event.preventDefault();
+        alert("Função Indisponível");
+    }
+</script>
+>>>>>>> subDev
 </body>
 </html>
