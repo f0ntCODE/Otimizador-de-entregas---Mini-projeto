@@ -94,5 +94,10 @@ public class Mochila {
 
          return resultadoTempera;
      }
+
+     public int[] executarTodos(){
+
+
+     }
     
 }
