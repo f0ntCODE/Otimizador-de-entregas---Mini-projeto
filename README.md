@@ -13,7 +13,7 @@ Este projeto resolverá um problema de um cenário fictício para fins de aprend
 ## Que cenário é este?
 Uma pequena empresa de logística, cuja frota é composta por camionetes, deseja otimizar as entregas por remessa, respeitando a capacidade de itens por caçamba e o peso que cada veículo suporta, de tal forma a maximizar o lucro. As camionetes suportam até **600kg** de peso e conseguem levar **10** itens no máximo.
 
-## Tecnologias a serem utilizadas (ainda em consideração):
+## Tecnologias a serem utilizadas:
 
 |TECNOLOGIAS|     USO     |
 |-----------|-------------|
@@ -25,8 +25,8 @@ Uma pequena empresa de logística, cuja frota é composta por camionetes, deseja
 É preciso ter o compilador JAVA na versão 21.0.6 por questões de compatibilidade e, preferenciamente, ter o gerenciador de projetos MAVEN instalado (se o sistema for executado em uma IDE que não seja o VSCODE, que oferece suporte ao projeto). 
 1. Primeiro, baixe-o aqui do repositório oficial;
 2. Em uma IDE configurada para rodar programas em JAVA, abra o projeto baixado;
-3. Acesse o arquivo _ContainerApplication.java_ e execute-o;
+3. Acesse o arquivo **_ContainerApplication.java_** e execute-o;
 4. Inicie seu navegador de internet e, na barra de endereços, digite: **_localhost:8080/_** e a página inicial do projeto irá ser exibida.
 
 > Nota:
-> Para acompanhar as depurações de projeto, **o terminal enquanto interage com o programa**, que mostra se os dados foram realmente obtidos do formulário e se serão exibidos corretamente
+> Para acompanhar as depurações de projeto, **observe o terminal** enquanto interage com o programa, que mostra se os dados foram realmente obtidos do formulário e se serão exibidos corretamente
