@@ -55,15 +55,8 @@ public class mainController {
                             Model model) {
 
     // Obter os resultados da classe Mochila
-<<<<<<< HEAD
         final int pesoMax = 550;    //final = valores constantes
         final int pesoMin = 50;
-
-        String[] resultados = Mochila.obterResultados(capacidadeMochila, pesoMax, pesoMin, numeroItens);
-=======
-        final int pesoMax = 500;    //final = valores constantes
-        final int pesoMin = 20;
->>>>>>> subDev
 
         mochila = new Mochila(capacidadeMochila, pesoMax, pesoMin, numeroItens); //inicializar valores
 
