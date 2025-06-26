@@ -36,6 +36,17 @@ public class ObterResultado_Model {
     private double fatorRedutor;
     private double ganho;
 
+    //genetico
+    private int[] populacao;
+    private int[] descendente;
+    private int[] descentendeCruzado1;
+    private int[] descentendeCruzado2;
+
+    private int corte;
+    private int aptidao;
+    private int tamanhoProblema;
+    private int tamanhoPopulacao;
+
     public ObterResultado_Model() {}//construtor
 
     public int[] getValores() {
@@ -208,5 +219,69 @@ public class ObterResultado_Model {
 
     public void setSomaPesoSubidaEncostaTentativa(int somaPesoSubidaEncostaTentativa) {
         this.somaPesoSubidaEncostaTentativa = somaPesoSubidaEncostaTentativa;
+    }
+
+    public int[] getPopulacao() {
+        return populacao;
+    }
+
+    public void setPopulacao(int[] populacao) {
+        this.populacao = populacao;
+    }
+
+    public int[] getDescendente() {
+        return descendente;
+    }
+
+    public void setDescendente(int[] descendente) {
+        this.descendente = descendente;
+    }
+
+    public int[] getDescentendeCruzado1() {
+        return descentendeCruzado1;
+    }
+
+    public void setDescentendeCruzado1(int[] descentendeCruzado1) {
+        this.descentendeCruzado1 = descentendeCruzado1;
+    }
+
+    public int[] getDescentendeCruzado2() {
+        return descentendeCruzado2;
+    }
+
+    public void setDescentendeCruzado2(int[] descentendeCruzado2) {
+        this.descentendeCruzado2 = descentendeCruzado2;
+    }
+
+    public int getCorte() {
+        return corte;
+    }
+
+    public void setCorte(int corte) {
+        this.corte = corte;
+    }
+
+    public int getAptidao() {
+        return aptidao;
+    }
+
+    public void setAptidao(int aptidao) {
+        this.aptidao = aptidao;
+    }
+
+    public int getTamanhoProblema() {
+        return tamanhoProblema;
+    }
+
+    public void setTamanhoProblema(int tamanhoProblema) {
+        this.tamanhoProblema = tamanhoProblema;
+    }
+
+    public int getTamanhoPopulacao() {
+        return tamanhoPopulacao;
+    }
+
+    public void setTamanhoPopulacao(int tamanhoPopulacao) {
+        this.tamanhoPopulacao = tamanhoPopulacao;
     }
 }
