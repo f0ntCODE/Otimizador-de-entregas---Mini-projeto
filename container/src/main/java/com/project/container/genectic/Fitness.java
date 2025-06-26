@@ -20,7 +20,7 @@ public class Fitness {
         int[] fitness = new int[tamanhoProblema];
 
         for(int cont = 0; cont < tamanhoPop; cont ++){
-            //PAROU AQUI fitness[cont] = avaliador.avaliar();
+            fitness[cont] = avaliador.avaliar();
 
         }
     }

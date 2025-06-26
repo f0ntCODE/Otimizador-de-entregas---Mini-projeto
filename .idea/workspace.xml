@@ -6,6 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="b7193e6e-3804-4530-90ff-0053d6d4363b" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/Avalia.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/Geradores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/SolucaoInicial.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/SubidaEncosta.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/Sucessores.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/functions/Tempera.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Fitness.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Fitness.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/crossover/Crossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/crossover/Crossover.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/selectionMethod/Tournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/selectionMethod/Tournament.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/model/ObterResultado_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/model/ObterResultado_Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Avaliador.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Avaliador.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +78,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ContainerApplication" />
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.ContainerApplication" />
     </list>
     <recent_temporary>
       <list>

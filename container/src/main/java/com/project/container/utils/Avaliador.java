@@ -111,4 +111,32 @@ public class Avaliador {
         return (int)ganhoMedio;
     }
 
+    /*public int[] avaliarFitness(int[] populacao){
+        int[] solucaoInicial = resultados.getSolucaoInicial();
+        int[] vetorPeso = resultados.getPesos();
+        int[] vetorLucro = resultados.getValores();
+
+        int tamanhoProblema = resultados.getTamanhoProblema();
+
+        int valorPesoAtual  = 0;
+        int valorLucroAtual = 0;
+        int valorAptidao    = 0;
+
+        for(int cont = 0; cont < tamanhoProblema; cont ++){
+
+            valorPesoAtual  += solucaoInicial[cont] * vetorPeso[cont];
+            valorLucroAtual += solucaoInicial[cont] * vetorLucro[cont];
+        }
+
+        resultados.setAptidao();
+        System.out.println("DA CLASSE AVALIADOR:" + resultados.getSomaLucro());
+
+        resultados.setSomaPeso(valorPesoAtual);
+
+        int[] conjunto = new int[]{valorLucroAtual, valorPesoAtual};
+
+        resultados.setAvaliado(conjunto); //armazenar
+
+        return conjunto;
+    }*/
 }

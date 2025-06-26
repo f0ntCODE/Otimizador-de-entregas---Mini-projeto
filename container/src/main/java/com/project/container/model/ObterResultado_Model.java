@@ -41,9 +41,11 @@ public class ObterResultado_Model {
     private int[] descendente;
     private int[] descentendeCruzado1;
     private int[] descentendeCruzado2;
+    private int[] aptidao;
+    private int[] pop1;
+    private int[] pop2;
 
     private int corte;
-    private int aptidao;
     private int tamanhoProblema;
     private int tamanhoPopulacao;
 
@@ -261,11 +263,11 @@ public class ObterResultado_Model {
         this.corte = corte;
     }
 
-    public int getAptidao() {
+    public int[] getAptidao() {
         return aptidao;
     }
 
-    public void setAptidao(int aptidao) {
+    public void setAptidao(int aptidao[]) {
         this.aptidao = aptidao;
     }
 
@@ -283,5 +285,21 @@ public class ObterResultado_Model {
 
     public void setTamanhoPopulacao(int tamanhoPopulacao) {
         this.tamanhoPopulacao = tamanhoPopulacao;
+    }
+
+    public int[] getPop1() {
+        return pop1;
+    }
+
+    public void setPop1(int[] pop1) {
+        this.pop1 = pop1;
+    }
+
+    public int[] getPop2() {
+        return pop2;
+    }
+
+    public void setPop2(int[] pop2) {
+        this.pop2 = pop2;
     }
 }
