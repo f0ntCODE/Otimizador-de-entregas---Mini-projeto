@@ -17,7 +17,7 @@
         <span class="icone" aria-hidden="true">📦</span>
         Métodos Básicos
     </a>
-    <a href="#" class="menu-link" onclick="Acesso(event)">
+    <a th:href="@{/genetic/genetico}" class="menu-link">
         <span class="icone" aria-hidden="true">🧬</span>
         Algoritmos Genéticos
     </a>
@@ -26,12 +26,5 @@
         Descrição do Problema
     </a>
 </nav>
-
-<script>
-    function Acesso(event) {
-        event.preventDefault();
-        alert("Função Indisponível");
-    }
-</script>
 </body>
 </html>

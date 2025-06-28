@@ -10,10 +10,10 @@ public class Tournament {
     }
 
     public int selecionarCandidato(){
-        int[] fitness = resultado.getAptidao();
+        double[] fitness = resultado.getAptidao();
         int tamanhoPop = resultado.getTamanhoPopulacao();
-        int candidato1 = (int)Math.random() * tamanhoPop;
-        int candidato2 = (int)Math.random() * tamanhoPop;
+        int candidato1 = (int)(Math.random() * tamanhoPop);
+        int candidato2 = (int)(Math.random() * tamanhoPop);
 
         if(fitness[candidato1] > fitness[candidato2]){
           return candidato1;

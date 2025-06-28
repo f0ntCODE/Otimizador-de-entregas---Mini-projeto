@@ -1,0 +1,197 @@
+:root {
+    --cor-fundo: #263238;
+    --cor-primaria: #0c469c;
+    --cor-primaria-hover: #3082ec;
+    --cor-texto: #FAFAFA;
+    --cor-texto-secundario: #B0BEC5;
+    --border-radius: 12px;
+    --fonte-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    margin: 0;
+    font-family: var(--fonte-principal);
+    color: var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+h1, h2, form, #resultados, a {
+    max-width: 700px;
+    width: 100%;
+}
+
+/* Título principal */
+h1 {
+    font-size: 2.5rem;
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+}
+
+/* Link voltar */
+a {
+    display: inline-block;
+    margin-bottom: 2rem;
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+}
+
+a:hover,
+a:focus {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-4px);
+    outline: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+a:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Subtítulo */
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--cor-texto-secundario);
+    margin: 2rem 0 1rem 0;
+    text-align: left;
+}
+
+/* Formulário */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+/* Labels */
+label {
+    font-weight: 600;
+    color: var(--cor-texto);
+    margin-bottom: 0.3rem;
+    display: block;
+}
+
+/* Inputs */
+input[type="number"] {
+    padding: 0.6rem 0.8rem;
+    border-radius: var(--border-radius);
+    border: none;
+    font-size: 1rem;
+    font-family: var(--fonte-principal);
+    width: 100%;
+    max-width: 300px;
+    background-color: #37474F;
+    color: var(--cor-texto);
+    transition: background-color 0.3s ease;
+}
+
+input[type="number"]:focus {
+    outline: 2px solid var(--cor-primaria);
+    background-color: #455A64;
+}
+
+/* Botões */
+button[type="button"] {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    align-self: flex-start;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+button[type="button"]:hover,
+button[type="button"]:focus {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-4px);
+    outline: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+button[type="button"]:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Espaçamento entre os botões */
+#executarConfiguracao {
+    margin-right: 1rem;
+}
+
+#executarTodos {
+    margin-right: 0;
+}
+
+/* Área de resultados */
+#resultados {
+    background-color: #37474F;
+    padding: 1.5rem 2rem;
+    border-radius: var(--border-radius);
+    color: var(--cor-texto);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    text-align: left;
+}
+
+#saida {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    h2 {
+        font-size: 1.25rem;
+    }
+    form {
+        gap: 1rem;
+    }
+    input[type="number"] {
+        max-width: 100%;
+    }
+    button[type="button"] {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+    a {
+        width: 100%;
+        text-align: center;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

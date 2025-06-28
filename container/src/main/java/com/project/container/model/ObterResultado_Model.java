@@ -39,15 +39,19 @@ public class ObterResultado_Model {
     //genetico
     private int[] populacao;
     private int[] descendente;
-    private int[] descentendeCruzado1;
-    private int[] descentendeCruzado2;
-    private int[] aptidao;
+    private int[] descendendeCruzado1;
+    private int[] descendendeCruzado2;
     private int[] pop1;
     private int[] pop2;
+    private int[] popAvaliado;
+    private int[] lucrosIndividuais;
+    private int[] pesosIndividuais;
 
     private int corte;
     private int tamanhoProblema;
     private int tamanhoPopulacao;
+
+    private double[] aptidao;
 
     public ObterResultado_Model() {}//construtor
 
@@ -239,20 +243,20 @@ public class ObterResultado_Model {
         this.descendente = descendente;
     }
 
-    public int[] getDescentendeCruzado1() {
-        return descentendeCruzado1;
+    public int[] getDescendendeCruzado1() {
+        return descendendeCruzado1;
     }
 
-    public void setDescentendeCruzado1(int[] descentendeCruzado1) {
-        this.descentendeCruzado1 = descentendeCruzado1;
+    public void setDescendendeCruzado1(int[] descendendeCruzado1) {
+        this.descendendeCruzado1 = descendendeCruzado1;
     }
 
-    public int[] getDescentendeCruzado2() {
-        return descentendeCruzado2;
+    public int[] getDescendendeCruzado2() {
+        return descendendeCruzado2;
     }
 
-    public void setDescentendeCruzado2(int[] descentendeCruzado2) {
-        this.descentendeCruzado2 = descentendeCruzado2;
+    public void setDescendendeCruzado2(int[] descendendeCruzado2) {
+        this.descendendeCruzado2 = descendendeCruzado2;
     }
 
     public int getCorte() {
@@ -263,11 +267,11 @@ public class ObterResultado_Model {
         this.corte = corte;
     }
 
-    public int[] getAptidao() {
+    public double[] getAptidao() {
         return aptidao;
     }
 
-    public void setAptidao(int aptidao[]) {
+    public void setAptidao(double aptidao[]) {
         this.aptidao = aptidao;
     }
 
@@ -301,5 +305,29 @@ public class ObterResultado_Model {
 
     public void setPop2(int[] pop2) {
         this.pop2 = pop2;
+    }
+
+    public int[] getPopAvaliado() {
+        return popAvaliado;
+    }
+
+    public void setPopAvaliado(int[] popAvaliado) {
+        this.popAvaliado = popAvaliado;
+    }
+
+    public int[] getLucrosIndividuais() {
+        return lucrosIndividuais;
+    }
+
+    public void setLucrosIndividuais(int[] lucrosIndividuais) {
+        this.lucrosIndividuais = lucrosIndividuais;
+    }
+
+    public int[] getPesosIndividuais() {
+        return pesosIndividuais;
+    }
+
+    public void setPesosIndividuais(int[] pesosIndividuais) {
+        this.pesosIndividuais = pesosIndividuais;
     }
 }

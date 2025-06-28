@@ -153,5 +153,8 @@ public class mainController {
 
     mochila.executarTodos(tempInicial, tempFinal, fatorRedutor, tentativas);
 
+        return new int[0];
     }
+
+
 }

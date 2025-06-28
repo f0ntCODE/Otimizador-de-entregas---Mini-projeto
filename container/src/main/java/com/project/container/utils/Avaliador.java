@@ -111,32 +111,53 @@ public class Avaliador {
         return (int)ganhoMedio;
     }
 
-    /*public int[] avaliarFitness(int[] populacao){
-        int[] solucaoInicial = resultados.getSolucaoInicial();
-        int[] vetorPeso = resultados.getPesos();
-        int[] vetorLucro = resultados.getValores();
-
+    public void avaliarIndividuos(ObterResultado_Model resultados) {
+        int tamanhoPopulacao = resultados.getTamanhoPopulacao();
         int tamanhoProblema = resultados.getTamanhoProblema();
+        int[] populacao = resultados.getPopulacao();
+        int[] pesos = resultados.getPesos();
+        int[] valores = resultados.getValores();
+        int pesoMaximo = resultados.getPesoMaximo();
 
-        int valorPesoAtual  = 0;
-        int valorLucroAtual = 0;
-        int valorAptidao    = 0;
+        if (populacao == null || populacao.length != tamanhoPopulacao * tamanhoProblema)
+            throw new IllegalStateException("População não inicializada ou tamanho inconsistente! Esperado: "
+                    + (tamanhoPopulacao * tamanhoProblema) + ", atual: " + (populacao == null ? 0 : populacao.length));
+        if (pesos == null || pesos.length != tamanhoProblema)
+            throw new IllegalStateException("Vetor de pesos não inicializado ou tamanho inconsistente!");
+        if (valores == null || valores.length != tamanhoProblema)
+            throw new IllegalStateException("Vetor de valores não inicializado ou tamanho inconsistente!");
 
-        for(int cont = 0; cont < tamanhoProblema; cont ++){
+        int[] lucros = new int[tamanhoPopulacao];
+        int[] pesosInd = new int[tamanhoPopulacao];
 
-            valorPesoAtual  += solucaoInicial[cont] * vetorPeso[cont];
-            valorLucroAtual += solucaoInicial[cont] * vetorLucro[cont];
+        for (int i = 0; i < tamanhoPopulacao; i++) {
+            int lucro = 0;
+            int peso = 0;
+            for (int j = 0; j < tamanhoProblema; j++) {
+                int gene = populacao[i * tamanhoProblema + j];
+                lucro += gene * valores[j];
+                peso  += gene * pesos[j];
+            }
+            if (peso > pesoMaximo) {
+                lucro = 0;
+            }
+            lucros[i] = lucro;
+            pesosInd[i] = peso;
         }
+        resultados.setLucrosIndividuais(lucros);
+        resultados.setPesosIndividuais(pesosInd);
+    }
 
-        resultados.setAptidao();
-        System.out.println("DA CLASSE AVALIADOR:" + resultados.getSomaLucro());
 
-        resultados.setSomaPeso(valorPesoAtual);
+    public static int calcularValorIndividuo(int[] individuo, int[] vetorValores) {
+        int valorTotal = 0;
+        for (int i = 0; i < individuo.length; i++) {
+            if (individuo[i] == 1) {
+                valorTotal += vetorValores[i];
+            }
+        }
+        return valorTotal;
+    }
 
-        int[] conjunto = new int[]{valorLucroAtual, valorPesoAtual};
 
-        resultados.setAvaliado(conjunto); //armazenar
-
-        return conjunto;
-    }*/
 }
