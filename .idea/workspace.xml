@@ -5,22 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b7193e6e-3804-4530-90ff-0053d6d4363b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/controllers/genecticController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/selectionMethod/Roulette.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/container/src/main/resources/static/genetic_algorithm.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/container/src/main/resources/templates/genetic_algorithm.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/AlgoritmoGenetico.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Cruzamento.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Descendentes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Mutacao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Populacao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Selecao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/utils/Gerador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/controllers/mainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/controllers/mainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/controllers/genecticController.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/controllers/genecticController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/facade/Mochila.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/facade/Mochila.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Fitness.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/Fitness.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/GenecticAlgorithm.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/GenecticAlgorithm.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/crossover/Crossover.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/crossover/Crossover.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/descendent/Descendent.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/descendent/Descendent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/mutation/Mutation.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/mutation/Mutation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/selectionMethod/Tournament.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/selectionMethod/Tournament.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/model/ObterResultado_Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/model/ObterResultado_Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Avaliador.java" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/java/com/project/container/utils/Avaliador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/container/src/main/resources/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/resources/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/GenecticAlgorithm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/crossover/Crossover.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/descendent/Descendent.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/mutation/Mutation.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/selectionMethod/Roulette.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/java/com/project/container/genectic/selectionMethod/Tournament.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/resources/static/genetic_algorithm.css" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/resources/static/genetic_algorithm.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/container/src/main/resources/templates/genetic_algorithm.html" beforeDir="false" afterPath="$PROJECT_DIR$/container/src/main/resources/templates/genetic_algorithm.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,10 +64,18 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "test",
-    "last_opened_file_path": "A:/Projetos/faculdade/Otimizador-de-entregas---Mini-projeto",
+    "last_opened_file_path": "A:/estudos/Faculdade/5º semestre/programacaoLinear/Otimizador-de-entregas---Mini-projeto/container/src/main/java/com/project/container/genectic",
     "settings.editor.selected.configurable": "editor.preferences.tabs"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="A:\estudos\Faculdade\5º semestre\programacaoLinear\Otimizador-de-entregas---Mini-projeto\container\src\main\java\com\project\container\genectic" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.project.container.genectic" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.ContainerApplication">
     <configuration name="ContainerApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.project.container.ContainerApplication" />
@@ -105,5 +116,15 @@
       <updated>1748033620313</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.ArrayIndexOutOfBoundsException" package="java.lang" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

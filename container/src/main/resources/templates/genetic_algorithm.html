@@ -14,7 +14,7 @@
     <label for="tamanhoProblema">Tamanho do Problema:</label>
     <input type="number" id="tamanhoProblema" name="tamanhoProblema" required />
 
-    <label for="tp">TP (Taxa de População):</label>
+    <label for="tp">TP (Tamanho de População):</label>
     <input type="number" id="tp" name="tp" required step="any" />
 
     <label for="tc">TC (Taxa de Cruzamento):</label>
@@ -26,8 +26,8 @@
     <label for="ng">NG (Número de Gerações):</label>
     <input type="number" id="ng" name="ng" required />
 
-    <label for="ig">IG (Indivíduos por Geração):</label>
-    <input type="number" id="ig" name="ig" required />
+    <label for="li">LI (Limite mochila):</label>
+    <input type="number" id="li" name="li" required />
 
     <button type="submit" id="executarConfiguracao">EXECUTAR CONFIGURAÇÃO</button>
 </form>
@@ -35,7 +35,8 @@
 
 <h2>Resultados</h2>
 <div id="resultados">
-    <p th:text="${resultado}"></p>
+    <pre th:text="${resultado}">RESULTADO DA EXECUÇÃO.</pre>
+
 </div>
 
 
@@ -49,10 +50,10 @@
       const tc = document.getElementById('tc').value;
       const tm = document.getElementById('tm').value;
       const ng = document.getElementById('ng').value;
-      const ig = document.getElementById('ig').value;
+      const li = document.getElementById('li').value;
       const tamanhoProblema = document.getElementById('tamanhoProblema').value;
 
-      saida.textContent = `Executando com Tamanho=${tamanhoProblema}, TP=${tp}, TC=${tc}, TM=${tm}, NG=${ng}, IG=${ig}`;
+      saida.textContent = `Executando com Tamanho=${tamanhoProblema}, TP=${tp}, TC=${tc}, TM=${tm}, NG=${ng}, LI=${li}`;
     });
 
     botaoTodos.addEventListener('click', () => {

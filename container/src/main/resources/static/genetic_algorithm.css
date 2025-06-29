@@ -94,6 +94,61 @@ label {
     display: block;
 }
 
+/* Botão EXECUTAR CONFIGURAÇÃO */
+button[type="submit"],
+#executarConfiguracao {
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    align-self: flex-start;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+    margin-top: 1rem;
+    margin-right: 1rem;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus,
+#executarConfiguracao:hover,
+#executarConfiguracao:focus {
+    background-color: var(--cor-primaria-hover);
+    transform: translateY(-4px);
+    outline: none;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+button[type="submit"]:active,
+#executarConfiguracao:active {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+}
+
+/* Responsividade para o botão submit */
+@media (max-width: 480px) {
+    button[type="submit"],
+    #executarConfiguracao {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+}
+
+/* Responsividade para o botão submit */
+@media (max-width: 480px) {
+    button[type="submit"] {
+        width: 100%;
+        text-align: center;
+        margin-right: 0;
+    }
+}
+
 /* Inputs */
 input[type="number"] {
     padding: 0.6rem 0.8rem;
@@ -114,7 +169,7 @@ input[type="number"]:focus {
 }
 
 /* Botões */
-button[type="button"] {
+button[type="submit"] {
     background-color: var(--cor-primaria);
     color: var(--cor-texto);
     font-weight: 600;
@@ -130,6 +185,25 @@ button[type="button"] {
     user-select: none;
     margin-top: 1rem;
     margin-right: 1rem;
+}
+
+#executarConfiguracao{
+    background-color: var(--cor-primaria);
+    color: var(--cor-texto);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    border: none;
+    cursor: pointer;
+    width: fit-content;
+    align-self: flex-start;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    user-select: none;
+    margin-top: 1rem;
+    margin-right: 1rem;
+
 }
 
 button[type="button"]:hover,

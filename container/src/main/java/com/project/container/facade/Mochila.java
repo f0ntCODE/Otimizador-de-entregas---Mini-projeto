@@ -3,12 +3,6 @@ package com.project.container.facade;
 import com.project.container.functions.subidaEncosta.ComTentativa;
 import com.project.container.functions.subidaEncosta.SemTentativa;
 import com.project.container.functions.tempera.TemperaSimulada;
-import com.project.container.genectic.GenecticAlgorithm;
-import com.project.container.genectic.crossover.Crossover;
-import com.project.container.genectic.descendent.Descendent;
-import com.project.container.genectic.mutation.Mutation;
-import com.project.container.genectic.selectionMethod.Roulette;
-import com.project.container.genectic.selectionMethod.Tournament;
 import com.project.container.model.ObterResultado_Model;
 import com.project.container.utils.Avaliador;
 import com.project.container.utils.Ganho;
@@ -36,12 +30,6 @@ public class Mochila {
     private Ganho ganho;
 
     //genetico
-    private Descendent descendente;
-    private Crossover cruzamento;
-    private Mutation mutacao;
-    private Roulette roleta;
-    private Tournament torneio;
-    private GenecticAlgorithm algoritmoGenetico;
     private int tamanhoProblema;
     private double taxaMutacao;
     private double taxaCruzamento;
@@ -60,12 +48,6 @@ public class Mochila {
         this.subidaSemTentativa = new SemTentativa(resultado);
         this.subidaComTentativa = new ComTentativa(resultado);
         this.tempera = new TemperaSimulada(resultado);
-        this.descendente = new Descendent(resultado, torneio);
-
-        this.cruzamento = new Crossover(resultado);
-        this.mutacao = new Mutation(resultado);
-        this.roleta = new Roulette(resultado);
-        this.torneio = new Tournament(resultado);
 
      }
 
@@ -79,12 +61,6 @@ public class Mochila {
         this.taxaMutacao = taxaMutacao;
         this.tamanhoProblema = tamanhoProblema;
 
-        this.avaliador = new Avaliador(resultado);
-        this.descendente = new Descendent(resultado, torneio);
-        this.cruzamento = new Crossover(resultado);
-        this.mutacao = new Mutation(resultado);
-        this.roleta = new Roulette(resultado);
-        this.torneio = new Tournament(resultado);
     }
 
     public int[] executarMetodoBasico() throws NullPointerException{
@@ -192,29 +168,4 @@ public class Mochila {
 
         return new int[5];
      }
-
-     public int[] executarAlgoritmoGenetico(double taxaCruzamento, double taxaMutacao, int tamanhoProblema,
-                                           int tamanhoPopulacao, int numeroGeracoes, int metodoSelecao){
-         resultado.setTamanhoProblema(tamanhoProblema);
-         resultado.setTamanhoPopulacao(tamanhoPopulacao);
-
-         if (resultado.getPopulacao() == null || resultado.getPopulacao().length == 0) {
-             // Gere a população inicial aleatória
-             int[] populacaoInicial = new int[tamanhoPopulacao * tamanhoProblema];
-             Random rand = new Random();
-             for (int i = 0; i < populacaoInicial.length; i++) {
-                 populacaoInicial[i] = rand.nextBoolean() ? 1 : 0;
-             }
-             resultado.setPopulacao(populacaoInicial);
-         }
-         avaliador.avaliarIndividuos(resultado);
-
-         descendente.gerarDescendentes(taxaCruzamento, taxaMutacao, 1);//gerar descendente inicial
-
-         algoritmoGenetico = new GenecticAlgorithm(numeroGeracoes, taxaCruzamento, taxaMutacao, cruzamento,
-                 mutacao, torneio, roleta, avaliador, resultado, descendente, metodoSelecao);
-
-        return resultado.getPopAvaliado(); //última população
-     }
-
 }
